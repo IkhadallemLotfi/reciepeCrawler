@@ -114,10 +114,9 @@ export default {
                     }
                 }, 1000);
                 setInterval(() => {
-                    console.log('lol')
                     var nodes = document.getElementById('carousel').childNodes
                     if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
-                        nodes[1].parentNode.removeChild(nodes[1])
+                        nodes[0].parentNode.removeChild(nodes[0])
                         this.padding1 += 6.3 ;
                     }
                 },250)
