@@ -111,8 +111,8 @@ export default {
                     var nbImage = Math.round(totalWidth / 230) ;
                     console.log(this.running1)
                     console.log(this.recettes1.length)
-                    console.log(nbImage)
-                    if(this.running1 ){
+                    console.log(nbImage +2)
+                    if(this.running1 && this.recettes1.length < 2*nbImage ){
                         this.crawlRecettes(1) 
                     }
                 }, 1000);
@@ -364,11 +364,11 @@ export default {
     }
 
     .transition { /***10s au départ puis 30s  */
-        -webkit-transition: all 15s linear;
-        -moz-transition: all 15s linear;
-        -ms-transition: all 15s linear;
-        -o-transition: all 15s linear;
-        transition: all 15s linear;
+        -webkit-transition: all 60s linear;
+        -moz-transition: all 60s linear;
+        -ms-transition: all 60s linear;
+        -o-transition: all 60s linear;
+        transition: all 60s linear;
     }
     .container-row-images a {
         margin-right: .3cm;
