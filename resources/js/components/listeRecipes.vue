@@ -259,9 +259,10 @@ export default {
                 switch (row) {
                     case 1:
                         if(this.running1 ){
-                            this.loading = false
-                            this.recettes1.push(response.data);
-                            this.loading = true;
+                            if(this.recettes1.length < nbImage +2){   
+                                this.recettes1.push(response.data);
+                            }
+                            
                             if(this.recettes1.length >= nbImage){
                                 this.margin1 -= 6.2
                                 this.ready1= true;
@@ -270,9 +271,9 @@ export default {
                         break;
                     case 2:
                         if(this.running2 ){
-                            this.loading2 = false
-                            this.recettes2.push(response.data);
-                            this.loading2 = true;
+                            if(this.recettes2.length < nbImage +2){   
+                                this.recettes2.push(response.data);
+                            }
                             if(this.recettes2.length >= nbImage){
                                 this.margin2 -= 6.2
                                 this.ready2= true;
@@ -281,9 +282,9 @@ export default {
                         break;
                     case 3:
                         if(this.running3 ){
-                            this.loading3 = false
-                            this.recettes3.push(response.data);
-                            this.loading3 = true;
+                            if(this.recettes3.length < nbImage +2){   
+                                this.recettes3.push(response.data);
+                            }
                             if(this.recettes3.length >= nbImage){
                                 this.margin3 -= 6.2
                                 this.ready3= true;
