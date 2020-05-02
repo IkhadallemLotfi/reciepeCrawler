@@ -87,6 +87,7 @@ export default {
             ready3 : Boolean(false),
 
             margin1 : Number(0),
+            savedMargin1 : Number(0),
             margin2 : Number(0),
             margin3 : Number(0),
 
@@ -106,9 +107,6 @@ export default {
     watch: {
         ready1 : function (old, val){
             if(this.ready1){
-                setInterval(() => {
-                    
-                }, 1000);
                 setInterval(() => {
                     var nodes = document.getElementById('carousel').childNodes
                     if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
@@ -145,26 +143,6 @@ export default {
                 }, 500);
             }
         },
-
-        recettes2 : function(val){
-            if(this.recettes2.length > 2){
-                var nodes = document.getElementById('carousel2').childNodes
-                if(nodes[1].getBoundingClientRect().x < 0 ){
-                    nodes[0].parentNode.removeChild(nodes[0])
-                    this.padding2 += 6.3 ;
-                }
-            }
-        },
-
-        recettes3 : function(val){
-            if(this.recettes3.length > 2){
-                var nodes = document.getElementById('carousel3').childNodes
-                if(nodes[1].getBoundingClientRect().x < 0 ){
-                    nodes[0].parentNode.removeChild(nodes[0])
-                    this.padding3 += 6.3 ;
-                }
-            }
-        }
     },
     methods:{
         getBGColor(){
@@ -199,6 +177,7 @@ export default {
                     if(this.ready1){
                         var boxOne = document.getElementById('carousel')
                         this.running1 = false;
+                        this.savedMargin1 = this.margin1
                     }
                     break;
                 
@@ -228,6 +207,7 @@ export default {
         resumeHover(row){
             switch (row) {
                 case 1:
+                    this.margin1 = this.savedMargin1
                     this.running1 = true
                     var boxOne = document.getElementById('carousel')
                     break;
@@ -360,11 +340,11 @@ export default {
     }
 
     .transition { /***10s au départ puis 30s  */
-        -webkit-transition: all 60s linear;
-        -moz-transition: all 60s linear;
-        -ms-transition: all 60s linear;
-        -o-transition: all 60s linear;
-        transition: all 60s linear;
+        -webkit-transition: all 15s linear;
+        -moz-transition: all 15s linear;
+        -ms-transition: all 15s linear;
+        -o-transition: all 15s linear;
+        transition: all 15s linear;
     }
     .container-row-images a {
         margin-right: .3cm;
