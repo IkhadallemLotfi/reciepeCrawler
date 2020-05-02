@@ -209,9 +209,9 @@ export default {
                 case 1:
                     
                     this.running1 = true
-                    console.log(margin1)
+                    console.log(this.margin1)
                     this.margin1 = this.savedMargin1
-                    console.log(margin1)
+                    console.log(this.margin1)
                     var boxOne = document.getElementById('carousel')
                     break;
                 
