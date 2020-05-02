@@ -21,11 +21,8 @@ class RecetteController extends Controller
     public function crawlRecettes(){
         ini_set('max_execution_time', 0);
         $result = 0;
-        //Debugbar::info(getcwd().'..\app\Http\Controllers\crawl.py');
         $result = shell_exec('python crawl.py');
-        Debugbar::info($result);
         $resultData = json_decode($result, true);
-         
         return $resultData;
     }
 }
