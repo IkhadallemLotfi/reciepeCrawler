@@ -111,7 +111,7 @@ export default {
                     var nbImage = Math.round(totalWidth / 230) ;
                     console.log(this.running1)
                     console.log(this.recettes1.length)
-                    console.log(nbImage +2)
+                    console.log(nbImage)
                     if(this.running1 ){
                         this.crawlRecettes(1) 
                     }
