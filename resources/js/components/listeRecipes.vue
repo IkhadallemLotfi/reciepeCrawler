@@ -75,7 +75,7 @@
 <script>
 export default {
     data(){
-        return{
+        return{ 
             logo: require('../../../public/img/logo.png'),
             show : Boolean(false),
             recettes1:[],
