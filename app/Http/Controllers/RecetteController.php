@@ -22,7 +22,7 @@ class RecetteController extends Controller
         ini_set('max_execution_time', 0);
         $result = 0;
         $result = shell_exec('python crawl.py');
-        log::info($result);
+        Log::info($result);
         $resultData = json_decode($result, true);
         return $resultData;
     }
