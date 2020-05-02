@@ -310,8 +310,32 @@ export default {
         var totalWidth =  $(window).width()
         var nbImage = Math.round(totalWidth / 230) ;
         
-        this.show = true;
-
+        setTimeout( ()=>{
+            this.show = true;
+            this.getMore(nbImage +1);
+            setTimeout( () =>{
+                this.loading = true;
+                this.loading2 = true;
+                this.loading3 = true;
+            },1000)
+        },500)
+        
+        
+        setTimeout( ()=>{
+            document.getElementById('carousel').style.transitionDuration = "30s";
+            document.getElementById('carousel2').style.transitionDuration = "30s";
+            document.getElementById('carousel3').style.transitionDuration = "30s";
+        },25000)
+        $(window).focus( $.proxy(function(){
+            this.resumeHover(1)
+            this.resumeHover(2)
+            this.resumeHover(3)
+        },this));
+        $(window).blur( $.proxy(function(){
+            this.endHover(1)
+            this.endHover(2)
+            this.endHover(3)
+        },this));
 
     },
 
