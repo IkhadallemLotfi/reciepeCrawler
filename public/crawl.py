@@ -96,7 +96,7 @@ ressources = [
     },
     {
         'case' : 2,
-        'site' : "https://www.750g.com/categorie_tartes.htm?page=", #image à éviter contient default
+        'site' : "https://www.750g.com/categorie_tartes.htm?page=",
         'max_pages' : 294,
     },
     {
