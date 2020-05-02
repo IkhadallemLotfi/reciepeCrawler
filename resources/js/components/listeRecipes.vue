@@ -112,7 +112,7 @@ export default {
                     console.log(this.running1)
                     console.log(this.recettes1.length)
                     console.log(nbImage +2)
-                    if(this.running1 && this.recettes1.length < nbImage+2 ){
+                    if(this.running1 ){
                         this.crawlRecettes(1) 
                     }
                 }, 1000);
