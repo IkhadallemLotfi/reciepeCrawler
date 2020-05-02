@@ -252,7 +252,8 @@ export default {
                             this.recettes1.push(response.data);
                             var i = 0
                             var nodes = document.getElementById('carousel').childNodes
-                            if( this.recettes1.length > 2 && nodes[1]!=null && nodes[1].getBoundingClientRect().x < 0 ){
+                            console.log(nodes)
+                            if( this.recettes1.length > 2 && nodes[1] != null && nodes[1].getBoundingClientRect().x < 0 ){
                                 nodes[0].parentNode.removeChild(nodes[0])
                                 this.padding1 += 6.3 ;
                             }

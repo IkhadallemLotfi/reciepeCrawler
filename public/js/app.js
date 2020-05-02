@@ -2103,6 +2103,7 @@ __webpack_require__.r(__webpack_exports__);
 
               var i = 0;
               var nodes = document.getElementById('carousel').childNodes;
+              console.log(nodes);
 
               if (_this4.recettes1.length > 2 && nodes[1] != null && nodes[1].getBoundingClientRect().x < 0) {
                 nodes[0].parentNode.removeChild(nodes[0]);
