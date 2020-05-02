@@ -112,7 +112,15 @@ export default {
                     if(this.running1 && this.recettes1.length < nbImage+2 ){
                         this.crawlRecettes(1) 
                     }
-                }, 500);
+                    console.log('lol')
+                    var nodes = document.getElementById('carousel').childNodes
+                    for (let index = 0; index < nodes.length; index++) {
+                        if(nodes[index].getBoundingClientRect().x < 0 && index > 0){
+                            nodes[index-1].parentNode.removeChild(nodes[index-1])
+                            this.padding1 += 6.3 ;
+                        }
+                    }
+                }, 1000);
             }
         },
 
@@ -219,7 +227,6 @@ export default {
             }
             
         },
-
         resumeHover(row){
             switch (row) {
                 case 1:
@@ -239,8 +246,6 @@ export default {
             }
             boxOne.classList.add('transition')
         },
-
-
         crawlRecettes(row){
             axios.get('/crawlRecettes')
             .then((response)=>{
@@ -250,13 +255,6 @@ export default {
                     case 1:
                         if(this.running1 ){
                             this.recettes1.push(response.data);
-                            var i = 0
-                            var nodes = document.getElementById('carousel').childNodes
-                            console.log(nodes)
-                            if( this.recettes1.length > 2 && nodes[1] != null && nodes[1].getBoundingClientRect().x < 0 ){
-                                nodes[0].parentNode.removeChild(nodes[0])
-                                this.padding1 += 6.3 ;
-                            }
                             if(this.recettes1.length >= nbImage){
                                 this.margin1 -= 6.2
                                 this.ready1= true;

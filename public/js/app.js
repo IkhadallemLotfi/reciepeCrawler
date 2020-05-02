@@ -1949,7 +1949,17 @@ __webpack_require__.r(__webpack_exports__);
           if (_this.running1 && _this.recettes1.length < nbImage + 2) {
             _this.crawlRecettes(1);
           }
-        }, 500);
+
+          console.log('lol');
+          var nodes = document.getElementById('carousel').childNodes;
+
+          for (var index = 0; index < nodes.length; index++) {
+            if (nodes[index].getBoundingClientRect().x < 0 && index > 0) {
+              nodes[index - 1].parentNode.removeChild(nodes[index - 1]);
+              _this.padding1 += 6.3;
+            }
+          }
+        }, 1000);
       }
     },
     ready2: function ready2(old, val) {
@@ -2100,15 +2110,6 @@ __webpack_require__.r(__webpack_exports__);
           case 1:
             if (_this4.running1) {
               _this4.recettes1.push(response.data);
-
-              var i = 0;
-              var nodes = document.getElementById('carousel').childNodes;
-              console.log(nodes);
-
-              if (_this4.recettes1.length > 2 && nodes[1] != null && nodes[1].getBoundingClientRect().x < 0) {
-                nodes[0].parentNode.removeChild(nodes[0]);
-                _this4.padding1 += 6.3;
-              }
 
               if (_this4.recettes1.length >= nbImage) {
                 _this4.margin1 -= 6.2;
