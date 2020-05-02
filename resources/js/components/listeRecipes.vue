@@ -142,8 +142,11 @@ export default {
 
         recettes1 : function(val){
             if(this.recettes1.length > 2){
+                console.log(this.recettes1.length);
                 var nodes = document.getElementById('carousel').childNodes
+                console.log(nodes[1].getBoundingClientRect().x );
                 if(nodes[1].getBoundingClientRect().x < 0 ){
+                    console.log('here')
                     nodes[0].parentNode.removeChild(nodes[0])
                     this.padding1 += 6.3 ;
                 }
