@@ -109,7 +109,7 @@ export default {
                 setInterval(() => {
                     var totalWidth =  $(window).width()
                     var nbImage = Math.round(totalWidth / 230) ;
-                    if(this.running1 ){
+                    if(this.running1 && this.recettes1.length < nbImage+1 ){
                         this.crawlRecettes(1) 
                     }
                 }, 500);
@@ -259,10 +259,7 @@ export default {
                 switch (row) {
                     case 1:
                         if(this.running1 ){
-                            if(this.recettes1.length < nbImage +2){   
-                                this.recettes1.push(response.data);
-                            }
-                            
+                            this.recettes1.push(response.data);
                             if(this.recettes1.length >= nbImage){
                                 this.margin1 -= 6.2
                                 this.ready1= true;
@@ -271,9 +268,7 @@ export default {
                         break;
                     case 2:
                         if(this.running2 ){
-                            if(this.recettes2.length < nbImage +2){   
-                                this.recettes2.push(response.data);
-                            }
+                            this.recettes2.push(response.data);
                             if(this.recettes2.length >= nbImage){
                                 this.margin2 -= 6.2
                                 this.ready2= true;
@@ -282,9 +277,7 @@ export default {
                         break;
                     case 3:
                         if(this.running3 ){
-                            if(this.recettes3.length < nbImage +2){   
-                                this.recettes3.push(response.data);
-                            }
+                            this.recettes3.push(response.data);
                             if(this.recettes3.length >= nbImage){
                                 this.margin3 -= 6.2
                                 this.ready3= true;
