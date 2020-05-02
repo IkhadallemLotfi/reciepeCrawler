@@ -1946,7 +1946,7 @@ __webpack_require__.r(__webpack_exports__);
           var totalWidth = $(window).width();
           var nbImage = Math.round(totalWidth / 230);
 
-          if (_this.running1 && _this.recettes1.length < nbImage + 1) {
+          if (_this.running1 && _this.recettes1.length < nbImage + 2) {
             _this.crawlRecettes(1);
           }
         }, 500);
@@ -2104,7 +2104,7 @@ __webpack_require__.r(__webpack_exports__);
               var i = 0;
               var nodes = document.getElementById('carousel').childNodes;
 
-              if (nodes[1] != null && nodes[1].getBoundingClientRect().x < 0) {
+              if (_this4.recettes1.length > 2 && nodes[1] != null && nodes[1].getBoundingClientRect().x < 0) {
                 nodes[0].parentNode.removeChild(nodes[0]);
                 _this4.padding1 += 6.3;
               }

@@ -109,7 +109,7 @@ export default {
                 setInterval(() => {
                     var totalWidth =  $(window).width()
                     var nbImage = Math.round(totalWidth / 230) ;
-                    if(this.running1 && this.recettes1.length < nbImage+1 ){
+                    if(this.running1 && this.recettes1.length < nbImage+2 ){
                         this.crawlRecettes(1) 
                     }
                 }, 500);
@@ -246,13 +246,13 @@ export default {
             .then((response)=>{
                 var totalWidth =  $(window).width()
                 var nbImage = Math.round(totalWidth / 230) ;
-                switch (row) {
+                switch (row) { 
                     case 1:
                         if(this.running1 ){
                             this.recettes1.push(response.data);
                             var i = 0
                             var nodes = document.getElementById('carousel').childNodes
-                            if(nodes[1]!=null && nodes[1].getBoundingClientRect().x < 0 ){
+                            if( this.recettes1.length > 2 && nodes[1]!=null && nodes[1].getBoundingClientRect().x < 0 ){
                                 nodes[0].parentNode.removeChild(nodes[0])
                                 this.padding1 += 6.3 ;
                             }
