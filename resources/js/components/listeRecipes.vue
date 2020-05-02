@@ -145,6 +145,7 @@ export default {
                 console.log(this.recettes1.length);
                 var nodes = document.getElementById('carousel').childNodes
                 console.log(nodes[1].getBoundingClientRect().x );
+                var i = 0;
                 while (i < nodes.length) {
                     if(nodes[i].getBoundingClientRect().x < 0 ){
                         console.log('here')
