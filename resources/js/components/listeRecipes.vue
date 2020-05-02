@@ -107,20 +107,16 @@ export default {
         ready1 : function (old, val){
             if(this.ready1){
                 setInterval(() => {
-                    var totalWidth =  $(window).width()
-                    var nbImage = Math.round(totalWidth / 230) ;
-                    console.log(this.running1)
-                    console.log(this.recettes1.length)
-                    console.log(nbImage +2)
-                    if(this.running1 && this.recettes1.length < 2*nbImage ){
-                        this.crawlRecettes(1) 
-                    }
+                    
                 }, 1000);
                 setInterval(() => {
                     var nodes = document.getElementById('carousel').childNodes
                     if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
                         this.recettes1.splice(0,1)
                         this.padding1 += 6.3 ;
+                        if(this.running1 ){
+                            this.crawlRecettes(1) 
+                        }
                     }
                 },250)
             }
