@@ -207,8 +207,11 @@ export default {
         resumeHover(row){
             switch (row) {
                 case 1:
-                    this.margin1 = this.savedMargin1
+                    
                     this.running1 = true
+                    console.log(margin1)
+                    this.margin1 = this.savedMargin1
+                    console.log(margin1)
                     var boxOne = document.getElementById('carousel')
                     break;
                 
