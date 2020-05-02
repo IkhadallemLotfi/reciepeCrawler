@@ -253,7 +253,7 @@ export default {
                         if(this.running1 ){
                             this.recettes1.push(response.data);
                             var nodes = document.getElementById('carousel').childNodes
-                            console.log(nodes[1].getBoundingClientRect().x );
+                            
                             var i = 0;
                             while (i < nodes.length) {
                                 if(nodes[i].getBoundingClientRect().x < 0 ){
