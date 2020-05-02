@@ -115,7 +115,7 @@ export default {
                     console.log('lol')
                     var nodes = document.getElementById('carousel').childNodes
                     for (let index = 0; index < nodes.length; index++) {
-                        if(nodes[index].getBoundingClientRect().x < 0 && index > 0){
+                        if( nodes[index] != null && nodes[index].getBoundingClientRect().x < 0 && index > 0){
                             nodes[index-1].parentNode.removeChild(nodes[index-1])
                             this.padding1 += 6.3 ;
                         }

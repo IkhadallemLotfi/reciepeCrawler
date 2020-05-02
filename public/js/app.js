@@ -1954,7 +1954,7 @@ __webpack_require__.r(__webpack_exports__);
           var nodes = document.getElementById('carousel').childNodes;
 
           for (var index = 0; index < nodes.length; index++) {
-            if (nodes[index].getBoundingClientRect().x < 0 && index > 0) {
+            if (nodes[index] != null && nodes[index].getBoundingClientRect().x < 0 && index > 0) {
               nodes[index - 1].parentNode.removeChild(nodes[index - 1]);
               _this.padding1 += 6.3;
             }
