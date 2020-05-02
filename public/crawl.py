@@ -16,7 +16,7 @@ def verifyAliment(string):
 
     return True;
 
-from selenium.webdriver.common.keys import Keys; # pour appuyer sur entrer dans un champs de saisi 
+from selenium.webdriver.common.keys import Keys;
 
 ressources = [
     {
@@ -111,7 +111,7 @@ ressources = [
     },
     {
         'case' : 5,
-        'site' : "https://www.cuisineaz.com/categories/aperitif-cat48640?page=", # image à éviter contient default
+        'site' : "https://www.cuisineaz.com/categories/aperitif-cat48640?page=",
         'max_pages' : 20,
     },
     {
@@ -180,7 +180,6 @@ options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) App
 
 trouve = False 
 while trouve == False :
-    #choix = ressources[randrange(0,len(ressources)-1 )]
     choix = ressources[0]
 
     headers= {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
@@ -275,7 +274,7 @@ while trouve == False :
                 if("default" not in p['data-src']):
                     photos.append(p)
                     j= 0;
-                    while j < len(links): # on recherche le lien correponsdant à l'image contenue dans p 
+                    while j < len(links):
                         
                         src = links[j].select('img')
                         if( src[0]['data-src'] == p['data-src'] ):
