@@ -140,8 +140,6 @@ export default {
             }
         },
 
-
-
         recettes2 : function(val){
             if(this.recettes2.length > 2){
                 var nodes = document.getElementById('carousel2').childNodes
@@ -252,16 +250,11 @@ export default {
                     case 1:
                         if(this.running1 ){
                             this.recettes1.push(response.data);
+                            var i = 0
                             var nodes = document.getElementById('carousel').childNodes
-                            
-                            var i = 0;
-                            while (i < nodes.length) {
-                                if(nodes[i].getBoundingClientRect().x < 0 ){
-                                    console.log('here')
-                                    nodes[i].parentNode.removeChild(nodes[i])
-                                    this.padding1 += 6.3 ;
-                                }
-                                i++
+                            if(nodes[1]!=null && nodes[1].getBoundingClientRect().x < 0 ){
+                                nodes[0].parentNode.removeChild(nodes[0])
+                                this.padding1 += 6.3 ;
                             }
                             if(this.recettes1.length >= nbImage){
                                 this.margin1 -= 6.2
