@@ -337,7 +337,6 @@ while trouve == False :
                 }
         break
     
-
 if trouve == True :
     print(json.dumps(return_object))
 exit()
