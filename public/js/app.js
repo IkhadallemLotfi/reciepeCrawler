@@ -1949,17 +1949,16 @@ __webpack_require__.r(__webpack_exports__);
           if (_this.running1 && _this.recettes1.length < nbImage + 2) {
             _this.crawlRecettes(1);
           }
-
+        }, 1000);
+        setInterval(function () {
           console.log('lol');
           var nodes = document.getElementById('carousel').childNodes;
 
-          for (var index = 0; index < nodes.length; index++) {
-            if (nodes[index] != null && nodes[index].getBoundingClientRect().x < 0 && index > 0) {
-              nodes[index - 1].parentNode.removeChild(nodes[index - 1]);
-              _this.padding1 += 6.3;
-            }
+          if (nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0) {
+            nodes[1].parentNode.removeChild(nodes[1]);
+            _this.padding1 += 6.3;
           }
-        }, 1000);
+        }, 250);
       }
     },
     ready2: function ready2(old, val) {

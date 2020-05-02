@@ -112,15 +112,15 @@ export default {
                     if(this.running1 && this.recettes1.length < nbImage+2 ){
                         this.crawlRecettes(1) 
                     }
+                }, 1000);
+                setInterval(() => {
                     console.log('lol')
                     var nodes = document.getElementById('carousel').childNodes
-                    for (let index = 0; index < nodes.length; index++) {
-                        if( nodes[index] != null && nodes[index].getBoundingClientRect().x < 0 && index > 0){
-                            nodes[index-1].parentNode.removeChild(nodes[index-1])
-                            this.padding1 += 6.3 ;
-                        }
+                    if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
+                        nodes[1].parentNode.removeChild(nodes[1])
+                        this.padding1 += 6.3 ;
                     }
-                }, 1000);
+                },250)
             }
         },
 
