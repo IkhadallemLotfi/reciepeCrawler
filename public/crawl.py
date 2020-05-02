@@ -339,4 +339,3 @@ while trouve == False :
     
 if trouve == True :
     print(json.dumps(return_object))
-exit()
