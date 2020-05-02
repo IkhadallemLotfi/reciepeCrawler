@@ -310,7 +310,7 @@ export default {
         var totalWidth =  $(window).width()
         var nbImage = Math.round(totalWidth / 230) ;
         
-        
+        this.show = true;
 
 
     },
