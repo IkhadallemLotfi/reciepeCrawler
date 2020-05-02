@@ -121,7 +121,7 @@ export default {
                 setInterval(() => {
                     var totalWidth =  $(window).width()
                     var nbImage = Math.round(totalWidth / 230) ;
-                    if(this.running2 ){
+                    if(this.running2 && this.recettes2.length < nbImage+1 ){
                         this.crawlRecettes(2) 
                     }
                 }, 500);
@@ -133,7 +133,7 @@ export default {
                 setInterval(() => {
                     var totalWidth =  $(window).width()
                     var nbImage = Math.round(totalWidth / 230) ;
-                    if(this.running3 ){
+                    if(this.running3 && this.recettes3.length < nbImage+1 ){
                         this.crawlRecettes(3) 
                     }
                 }, 500);
