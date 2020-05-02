@@ -145,11 +145,15 @@ export default {
                 console.log(this.recettes1.length);
                 var nodes = document.getElementById('carousel').childNodes
                 console.log(nodes[1].getBoundingClientRect().x );
-                if(nodes[1].getBoundingClientRect().x < 0 ){
-                    console.log('here')
-                    nodes[0].parentNode.removeChild(nodes[0])
-                    this.padding1 += 6.3 ;
+                while (i < nodes.length) {
+                    if(nodes[i].getBoundingClientRect().x < 0 ){
+                        console.log('here')
+                        nodes[i].parentNode.removeChild(nodes[i])
+                        this.padding1 += 6.3 ;
+                    }
+                    i++
                 }
+                
             }
         },
 
