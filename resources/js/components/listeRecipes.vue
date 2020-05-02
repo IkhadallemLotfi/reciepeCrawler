@@ -312,7 +312,7 @@ export default {
         
         setTimeout( ()=>{
             this.show = true;
-            this.getMore(nbImage +2);
+            this.getMore(nbImage +1);
             setTimeout( () =>{
                 this.loading = true;
                 this.loading2 = true;
@@ -373,11 +373,11 @@ export default {
     }
 
     .transition { /***10s au départ puis 30s  */
-        -webkit-transition: all 150s linear;
-        -moz-transition: all 150s linear;
-        -ms-transition: all 150s linear;
-        -o-transition: all 150s linear;
-        transition: all 150s linear;
+        -webkit-transition: all 15s linear;
+        -moz-transition: all 15s linear;
+        -ms-transition: all 15s linear;
+        -o-transition: all 15s linear;
+        transition: all 15s linear;
     }
     .container-row-images a {
         margin-right: .3cm;
