@@ -209,7 +209,7 @@ export default {
                 case 1:
                     
                     this.running1 = true
-                    this.margin1  = this.savedMargin1
+                    this.margin1  -= 6.2
                     var boxOne = document.getElementById('carousel')
                     break;
                 
@@ -224,7 +224,6 @@ export default {
                     break;
             }
             boxOne.classList.add('transition')
-            boxOne.style.marginLeft = this.savedMargin1;
         },
         crawlRecettes(row){
             axios.get('/crawlRecettes')
