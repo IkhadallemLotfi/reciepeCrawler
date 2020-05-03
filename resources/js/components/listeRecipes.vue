@@ -87,7 +87,6 @@ export default {
             ready3 : Boolean(false),
 
             margin1 : Number(0),
-            savedMargin1 : Number(0),
             margin2 : Number(0),
             margin3 : Number(0),
 
@@ -177,7 +176,6 @@ export default {
                     if(this.ready1){
                         var boxOne = document.getElementById('carousel')
                         this.running1 = false;
-                        this.savedMargin1 = this.margin1
                     }
                     break;
                 
@@ -209,7 +207,10 @@ export default {
                 case 1:
                     
                     this.running1 = true
-                    this.margin1  -= 6.2
+                    if(this.ready1){
+                        this.margin1  -= 6.2
+                    }
+                    
                     var boxOne = document.getElementById('carousel')
                     break;
                 
