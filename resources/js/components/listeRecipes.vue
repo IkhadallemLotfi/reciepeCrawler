@@ -11,7 +11,7 @@
         <div class="container-row-images row col-md-12">
             <div v-bind:style="{'padding-left' : padding1+'cm'}" ></div>
             <div v-bind:style="{'margin-left' : margin1+'cm'}" id="carousel"
-            class="transition"  >
+            class="transition" :key="key1"  >
                 <a v-for="(destination,index) in recettes1" :href="destination.link" :key="index+'car1'"  
                 @mouseover="endHover(1)" @mouseleave="resumeHover(1)"
                 target="_blank" class="col-md-1" :id="index" >
@@ -78,6 +78,7 @@ export default {
         return{ 
             logo: require('../../../public/img/logo.png'),
             show : Boolean(false),
+            key1 : Number(0),
             recettes1:[],
             recettes2:[],
             recettes3:[],
@@ -201,7 +202,7 @@ export default {
             }
             boxOne.classList.add('transition')
             if(this.ready1){
-                this.margin1 = this.savedMargin1- 1;
+                this.margin1 = this.savedMargin1- 0.01;
             }
         },
         crawlRecettes(row){
@@ -213,6 +214,7 @@ export default {
                     case 1:
                         if(this.running1 ){
                             this.recettes1.push(response.data);
+                            this.key1 ++;
                             if(this.recettes1.length >= nbImage){
                                 this.margin1 -= 6.2
                                 this.ready1= true;
