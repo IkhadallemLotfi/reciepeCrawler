@@ -87,6 +87,7 @@ export default {
             ready3 : Boolean(false),
 
             margin1 : Number(0),
+            savedMargin1 : Number(0),
             margin2 : Number(0),
             margin3 : Number(0),
 
@@ -172,6 +173,7 @@ export default {
                     break;
             }
             if(boxOne != null){
+                this.savedMargin1 = this.margin1
                 var computedStyle = window.getComputedStyle(boxOne),
                 marginLeft = computedStyle.getPropertyValue('margin-left');
                 boxOne.style.marginLeft = marginLeft;
@@ -183,12 +185,7 @@ export default {
         resumeHover(row){
             switch (row) {
                 case 1:
-                    
                     this.running1 = true
-                    if(this.ready1){
-                        this.crawlRecettes(1) 
-                    }
-                    
                     var boxOne = document.getElementById('carousel')
                     break;
                 
@@ -203,6 +200,9 @@ export default {
                     break;
             }
             boxOne.classList.add('transition')
+            if(this.ready1){
+                this.margin1 = this.savedMargin1- 1;
+            }
         },
         crawlRecettes(row){
             axios.get('/crawlRecettes')
