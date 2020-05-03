@@ -11,7 +11,7 @@
         <div class="container-row-images row col-md-12">
             <div v-bind:style="{'padding-left' : padding1+'cm'}" ></div>
             <div v-bind:style="{'margin-left' : margin1+'cm'}" id="carousel"
-            class="transition" :key="key1"  >
+            class="transition"   >
                 <a v-for="(destination,index) in recettes1" :href="destination.link" :key="index+'car1'"  
                 @mouseover="endHover(1)" @mouseleave="resumeHover(1)"
                 target="_blank" class="col-md-1" :id="index" >
