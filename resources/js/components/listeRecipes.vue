@@ -202,7 +202,7 @@ export default {
             }
             boxOne.classList.add('transition')
             if(this.ready1){
-                this.margin1 = this.savedMargin1- 0.01;
+                this.margin1 = this.savedMargin1;
             }
         },
         crawlRecettes(row){
