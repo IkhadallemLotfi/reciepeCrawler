@@ -206,7 +206,10 @@ while trouve == False :
                         j=j+1
             if len(photos) > 0 :
                 trouve= True
-                photo = photos[randrange(0, len(photos)-1 )]
+                if len(photos > 1):
+                    photo = photos[randrange(0, len(photos)-1 )]
+                else :
+                    photo = photos[0]
 
                 return_object = {
                     'link' : photo['link'],
