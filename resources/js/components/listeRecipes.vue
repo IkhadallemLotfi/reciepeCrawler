@@ -112,8 +112,12 @@ export default {
                     if(this.running1 ){
                         this.crawlRecettes(1) 
                     }
-
                 },1000)
+                setInterval(() =>{
+                    if(this.running1){
+                        this.margin1 -= 6.2
+                    }
+                },12000)
 
                 
                 setInterval(() => {
@@ -226,7 +230,6 @@ export default {
                             this.recettes1.push(response.data);
                             this.key1 ++;
                             if(this.recettes1.length >= nbImage){
-                                this.margin1 -= 6.2
                                 this.ready1= true;
                             }
                         }
@@ -235,7 +238,7 @@ export default {
                         if(this.running2 ){
                             this.recettes2.push(response.data);
                             if(this.recettes2.length >= nbImage){
-                                this.margin2 -= 6.2
+                                //this.margin2 -= 6.2
                                 this.ready2= true;
                             }
                         }
@@ -244,7 +247,7 @@ export default {
                         if(this.running3 ){
                             this.recettes3.push(response.data);
                             if(this.recettes3.length >= nbImage){
-                                this.margin3 -= 6.2
+                                //this.margin3 -= 6.2
                                 this.ready3= true;
                             }
                         }
