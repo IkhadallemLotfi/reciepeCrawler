@@ -215,6 +215,7 @@ export default {
             }
         },
         crawlRecettes(row){
+            console.log('test')
             axios.get('/crawlRecettes')
             .then((response)=>{
                 var totalWidth =  $(window).width()
