@@ -17,14 +17,12 @@
                 target="_blank" class="col-md-1" :id="index" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
-                <transition name="fade">
-                    <a class="col-md-1" v-if="loading" style="animation-duration: 2s" id="loading1">
-                        <div class="image-waiting" :style="{'background-color': getBGColor()}">
-                            <grid-loader :loading="true" color="white" 
-                            style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
-                        </div>
-                    </a>
-                </transition>
+                <a class="col-md-1" style="animation-duration: 2s" id="loading1">
+                    <div class="image-waiting" :style="{'background-color': getBGColor()}">
+                        <grid-loader :loading="true" color="white" 
+                        style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -133,9 +131,9 @@ export default {
                         }
                     }
                     var totalWidth =  $(window).width()
-                    var width=document.getElementById('loading1').style.width;
-                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().x + width < totalWidth ){
-                        this.endHover(1);
+                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
+                        //this.endHover(1);
+                        console.log('test')
                     }else{
                         this.resumeHover(1);
                     }
@@ -289,12 +287,6 @@ export default {
             },1000)
         },500)
         
-        
-        setTimeout( ()=>{
-            document.getElementById('carousel').style.transitionDuration = "30s";
-            document.getElementById('carousel2').style.transitionDuration = "30s";
-            document.getElementById('carousel3').style.transitionDuration = "30s";
-        },25000)
         $(window).focus( $.proxy(function(){
             this.resumeHover(1)
             this.resumeHover(2)
