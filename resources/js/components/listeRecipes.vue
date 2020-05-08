@@ -108,7 +108,7 @@ export default {
     watch: {
         margin1 : function (val){
             var totalWidth =  $(window).width()
-            if (document.getElementById('loading1').getBoundingClientRect().x+226 < totalWidth ){
+            if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().x+226 < totalWidth ){
                 this.endHover(1);
             }
         },
