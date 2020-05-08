@@ -18,7 +18,7 @@
                     <img class="image-recette" :src="destination.src"> 
                 </a>
                 <transition name="fade">
-                    <a class="col-md-1" v-if="loading" style="animation-duration: 2s" id="">
+                    <a class="col-md-1" v-if="loading" style="animation-duration: 2s" id="loading1">
                         <div class="image-waiting" :style="{'background-color': getBGColor()}">
                             <grid-loader :loading="true" color="white" 
                             style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
@@ -106,6 +106,12 @@ export default {
         }
     },
     watch: {
+        margin1 : function (val){
+            var totalWidth =  $(window).width()
+            if (document.getElementById('loading1').getBoundingClientRect().x+226 < totalWidth ){
+                this.endHover(1);
+            }
+        },
         ready1 : function (old, val){
             if(this.ready1){
                 this.margin1 -= 6.2
@@ -222,7 +228,6 @@ export default {
             }
         },
         crawlRecettes(row){
-            console.log('test')
             axios.get('/crawlRecettes')
             .then((response)=>{
                 var totalWidth =  $(window).width()
