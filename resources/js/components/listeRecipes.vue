@@ -11,9 +11,8 @@
         <div class="container-row-images row col-md-12">
             <div v-bind:style="{'padding-left' : padding1+'cm'}" ></div>
             <div v-bind:style="{'margin-left' : margin1+'cm'}" id="carousel"
-            class="transition"   >
+            class="transition" @mouseover="endHover(1)" @mouseleave="resumeHover(1)"   >
                 <a v-for="(destination,index) in recettes1" :href="destination.link" :key="index+'car1'"  
-                @mouseover="endHover(1)" @mouseleave="resumeHover(1)"
                 target="_blank" class="col-md-1" :id="index" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
@@ -193,7 +192,17 @@ export default {
                     break;
             }
             if(boxOne != null){
-                this.savedMargin1 = this.margin1
+                switch (row) {
+                    case 1:
+                        this.savedMargin1 = this.margin1
+                        break;
+                    case 2:
+                        
+                        break;
+                    case 3:
+                        
+                        break;
+                }
                 var computedStyle = window.getComputedStyle(boxOne),
                 marginLeft = computedStyle.getPropertyValue('margin-left');
                 boxOne.style.marginLeft = marginLeft;
@@ -220,9 +229,19 @@ export default {
                     break;
             }
             boxOne.classList.add('transition')
-            if(this.ready1){
-                this.margin1 = this.savedMargin1 - 0.001;
-                this.margin1 = this.savedMargin1 + 0.001;
+            switch (row) {
+                case 1:
+                    if(this.ready1){
+                        this.margin1 = this.savedMargin1 - 0.001;
+                        this.margin1 = this.savedMargin1 + 0.001;
+                    }
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
             }
         },
         crawlRecettes(row){
