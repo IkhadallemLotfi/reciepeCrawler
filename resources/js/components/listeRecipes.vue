@@ -133,9 +133,11 @@ export default {
                         }
                     }
                     var totalWidth =  $(window).width()
-                    var width=document.getElementById('id_here').style.width;
+                    var width=document.getElementById('loading1').style.width;
                     if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().width < totalWidth ){
                         this.endHover(1);
+                    }else{
+                        this.resumeHover(1);
                     }
                 },250)
             }
@@ -245,7 +247,6 @@ export default {
                         if(this.running2 ){
                             this.recettes2.push(response.data);
                             if(this.recettes2.length >= nbImage){
-                                //this.margin2 -= 6.2
                                 this.ready2= true;
                             }
                         }
@@ -254,7 +255,6 @@ export default {
                         if(this.running3 ){
                             this.recettes3.push(response.data);
                             if(this.recettes3.length >= nbImage){
-                                //this.margin3 -= 6.2
                                 this.ready3= true;
                             }
                         }
