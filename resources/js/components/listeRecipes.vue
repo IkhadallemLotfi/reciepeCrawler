@@ -109,6 +109,7 @@ export default {
         margin1 : function (val){
             var totalWidth =  $(window).width()
             if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().x+226 < totalWidth ){
+                alert();
                 this.endHover(1);
             }
         },
