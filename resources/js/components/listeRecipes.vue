@@ -106,13 +106,6 @@ export default {
         }
     },
     watch: {
-        margin1 : function (val){
-            var totalWidth =  $(window).width()
-            if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().x+226 < totalWidth ){
-                alert();
-                this.endHover(1);
-            }
-        },
         ready1 : function (old, val){
             if(this.ready1){
                 this.margin1 -= 6.2
@@ -138,6 +131,11 @@ export default {
                         if(this.running1 ){
                             this.crawlRecettes(1) 
                         }
+                    }
+                    var totalWidth =  $(window).width()
+                    var width=document.getElementById('id_here').style.width;
+                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().width < totalWidth ){
+                        this.endHover(1);
                     }
                 },250)
             }
