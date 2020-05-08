@@ -113,7 +113,7 @@ export default {
                         this.crawlRecettes(1) 
                     }
 
-                },500)
+                },1000)
 
                 
                 setInterval(() => {
