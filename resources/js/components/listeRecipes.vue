@@ -108,18 +108,21 @@ export default {
     watch: {
         ready1 : function (old, val){
             if(this.ready1){
+                this.margin1 -= 6.2
                 setInterval(() => {
                     if(this.running1 ){
-                        this.crawlRecettes(1) 
+                        var totalWidth =  $(window).width()
+                        var nbImage = Math.round(totalWidth / 230) ;
+                        if(this.recettes1.length < nbImage +5 ){
+                            this.crawlRecettes(1)
+                        }
                     }
                 },1000)
                 setInterval(() =>{
                     if(this.running1){
                         this.margin1 -= 6.2
                     }
-                },12000)
-
-                
+                },10000)
                 setInterval(() => {
                     var nodes = document.getElementById('carousel').childNodes
                     if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
@@ -335,11 +338,11 @@ export default {
     }
 
     .transition { /***10s au départ puis 30s  */
-        -webkit-transition: all 15s linear;
-        -moz-transition: all 15s linear;
-        -ms-transition: all 15s linear;
-        -o-transition: all 15s linear;
-        transition: all 15s linear;
+        -webkit-transition: all 10s linear;
+        -moz-transition: all 10s linear;
+        -ms-transition: all 10s linear;
+        -o-transition: all 10s linear;
+        transition: all 10s linear;
     }
     .container-row-images a {
         margin-right: .3cm;
