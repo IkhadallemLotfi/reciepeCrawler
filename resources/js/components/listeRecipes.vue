@@ -132,10 +132,9 @@ export default {
                     }
                     var totalWidth =  $(window).width()
                     if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
-                        //this.endHover(1);
-                        console.log('test')
+                        this.running1 = false;
                     }else{
-                        this.resumeHover(1);
+                        this.running1 = true;
                     }
                 },250)
             }
