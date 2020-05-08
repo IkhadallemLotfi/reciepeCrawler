@@ -18,7 +18,7 @@
                     <img class="image-recette" :src="destination.src"> 
                 </a>
                 <transition name="fade">
-                    <a class="col-md-1" v-if="loading" style="animation-duration: 2s">
+                    <a class="col-md-1" v-if="loading" style="animation-duration: 2s" id="">
                         <div class="image-waiting" :style="{'background-color': getBGColor()}">
                             <grid-loader :loading="true" color="white" 
                             style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
@@ -108,6 +108,14 @@ export default {
     watch: {
         ready1 : function (old, val){
             if(this.ready1){
+                setInterval(() => {
+                    if(this.running1 ){
+                        this.crawlRecettes(1) 
+                    }
+
+                },1000)
+
+                
                 setInterval(() => {
                     var nodes = document.getElementById('carousel').childNodes
                     if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
