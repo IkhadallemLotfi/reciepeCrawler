@@ -134,7 +134,7 @@ export default {
                     }
                     var totalWidth =  $(window).width()
                     var width=document.getElementById('loading1').style.width;
-                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().width < totalWidth ){
+                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().x + width < totalWidth ){
                         this.endHover(1);
                     }else{
                         this.resumeHover(1);
