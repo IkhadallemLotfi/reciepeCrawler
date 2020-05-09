@@ -172,28 +172,9 @@ export default {
             }
             
         },
-        moveCarousel(row){
-            setInterval(() =>{
-                if(this.running1 && this.ready1){
-                    this.margin1 -= 6.2
-                }
-            },10000)
-        },
         launch(row){
-            setInterval(() => {
-                if(this.running1 ){
-                    var totalWidth =  $(window).width()
-                    var nbImage = Math.round(totalWidth / 230) ;
-                    if(this.recettes1.length < nbImage +5 ){
-                        this.crawlRecettes(1,false)
-                    }
-                }
-            },1000)
-            setInterval(() => {
-                var nodes = document.getElementById('carousel').childNodes
-                if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
-                    this.recettes1.splice(0,1)
-                    this.padding1 += 6.3 ;
+            if(this.margin1 == 0 ){ // on lance les timer une seule fois
+                setInterval(() => {
                     if(this.running1 ){
                         var totalWidth =  $(window).width()
                         var nbImage = Math.round(totalWidth / 230) ;
@@ -201,17 +182,34 @@ export default {
                             this.crawlRecettes(1,false)
                         }
                     }
-                }
-                var totalWidth =  $(window).width()
-                if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
-                    this.ready1 = false;
-                    var boxOne = document.getElementById('carousel')
-                    var computedStyle = window.getComputedStyle(boxOne),
-                    marginLeft = computedStyle.getPropertyValue('margin-left');
-                    boxOne.classList.remove('transition');
-                    boxOne.style.marginLeft = marginLeft;
-                }
-            },250)
+                },1000)
+                setInterval(() => {
+                    var nodes = document.getElementById('carousel').childNodes
+                    if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
+                        this.recettes1.splice(0,1)
+                        this.padding1 += 6.3 ;
+                        if(this.running1 ){
+                            var totalWidth =  $(window).width()
+                            var nbImage = Math.round(totalWidth / 230) ;
+                            if(this.recettes1.length < nbImage +5 ){
+                                this.crawlRecettes(1,false)
+                            }
+                        }
+                    }
+                    var totalWidth =  $(window).width()
+                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
+                        this.ready1 = false;
+                        var boxOne = document.getElementById('carousel')
+                        var computedStyle = window.getComputedStyle(boxOne),
+                        marginLeft = computedStyle.getPropertyValue('margin-left');
+                        boxOne.classList.remove('transition');
+                        boxOne.style.marginLeft = marginLeft;
+                    }
+                },250)
+            }
+            this.margin1 -= 6.2
+
+            
         },
         resumeHover(row){
             switch (row) {
@@ -251,9 +249,6 @@ export default {
                                 this.recettes1.push(response.data);
                                 this.key1 ++;
                                 if(this.recettes1.length >= nbImage){
-                                    if(this.margin1 == 0 ){
-                                        this.moveCarousel(1)
-                                    }
                                     if(this.ready1 == false){
                                         this.ready1= true;
                                         this.launch(1)
