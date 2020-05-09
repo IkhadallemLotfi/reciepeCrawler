@@ -285,8 +285,6 @@ export default {
         getMore(nb){
             for (let index = 0; index < nb; index++) {
                 this.crawlRecettes(1);
-                this.crawlRecettes(2);
-                this.crawlRecettes(3);
             }
         }
     },
