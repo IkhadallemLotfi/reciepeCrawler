@@ -239,21 +239,23 @@ export default {
             }
         },
         crawlRecettes(row){
-            if(this['loading'+row] == false){
-                this['loading'+row] = true;
+            if(this.loading1 == false){
+                this.loading1 = true;
                 axios.get('/crawlRecettes')
                 .then((response)=>{
                     var totalWidth =  $(window).width()
                     var nbImage = Math.round(totalWidth / 230) ;
-                    this['loading'+row] = true;
+                    this.loading1 = true;
                     switch (row) { 
                         case 1:
                             if(this.running1 ){
                                 this.recettes1.push(response.data);
                                 this.key1 ++;
                                 if(this.recettes1.length >= nbImage){
-                                    this.ready1= true;
-                                    this.launch(1)
+                                    if(this.ready1 == false){
+                                        this.ready1= true;
+                                        this.launch(1)
+                                    }
                                 }
                             }
                             break;
