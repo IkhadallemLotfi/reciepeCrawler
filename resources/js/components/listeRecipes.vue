@@ -195,6 +195,7 @@ export default {
                 switch (row) {
                     case 1:
                         this.savedMargin1 = this.margin1
+                        console.log(this.savedMargin1)
                         break;
                     case 2:
                         
@@ -310,6 +311,7 @@ export default {
             this.resumeHover(2)
             this.resumeHover(3)
         },this));
+
         $(window).blur( $.proxy(function(){
             this.endHover(1)
             this.endHover(2)
