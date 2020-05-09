@@ -204,20 +204,13 @@ export default {
                     }
                 }
                 var totalWidth =  $(window).width()
-                console.log(document.getElementById('loading1').getBoundingClientRect().right)
                 if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
                     this.ready1 = false;
-                    alert();
                     var boxOne = document.getElementById('carousel')
                     var computedStyle = window.getComputedStyle(boxOne),
                     marginLeft = computedStyle.getPropertyValue('margin-left');
-                    boxOne.style.marginLeft = marginLeft;
-                    
                     boxOne.classList.remove('transition');
-
-                }else{
-                    this.ready1 = true;
-                    boxOne.classList.add('transition');
+                    boxOne.style.marginLeft = marginLeft;
                 }
             },250)
         },
