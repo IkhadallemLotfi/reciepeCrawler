@@ -245,7 +245,7 @@ export default {
                 .then((response)=>{
                     var totalWidth =  $(window).width()
                     var nbImage = Math.round(totalWidth / 230) ;
-                    this.loading1 = true;
+                    this.loading1 = false;
                     switch (row) { 
                         case 1:
                             if(this.running1 ){
