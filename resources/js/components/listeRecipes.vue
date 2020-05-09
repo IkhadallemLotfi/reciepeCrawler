@@ -13,7 +13,7 @@
             <div v-bind:style="{'margin-left' : margin1+'cm'}" id="carousel"
             class="transition" @mouseover="endHover(1)" @mouseleave="resumeHover(1)"   >
                 <a v-for="(destination,index) in recettes1" :href="destination.link" :key="index+'car1'"  
-                target="_blank" class="col-md-1" :id="index" >
+                target="_blank" class="col-md-1" :id="index" @click="this.endHover(1);this.endHover(2);this.endHover(3)" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
                 <a class="col-md-1" style="animation-duration: 2s" id="loading1">
