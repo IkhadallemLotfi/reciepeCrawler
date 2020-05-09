@@ -241,7 +241,7 @@ export default {
         crawlRecettes(row,start){
             if(this.loading1 == false || start == true){
                 this.loading1 = true;
-                axios.get('/crawlRecettes')
+                axios.get('/crawlRecettes',{timeout : 10000})
                 .then((response)=>{
                     var totalWidth =  $(window).width()
                     var nbImage = Math.round(totalWidth / 230) ;
