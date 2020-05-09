@@ -117,7 +117,7 @@ export default {
                 },1000)
                 setInterval(() =>{
                     if(this.running1 && this.ready1){
-                        alert();
+                        console.log('test');
                         this.margin1 -= 6.2
                     }
                 },10000)
