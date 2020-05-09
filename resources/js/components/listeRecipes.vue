@@ -97,7 +97,7 @@ export default {
             running2 : Boolean(true),
             running3 : Boolean(true),
 
-            loading : Boolean(false),
+            loading1 : Boolean(false),
             loading2 : Boolean(false),
             loading3 : Boolean(false),
         }
@@ -239,42 +239,46 @@ export default {
             }
         },
         crawlRecettes(row){
-            axios.get('/crawlRecettes')
-            .then((response)=>{
-                var totalWidth =  $(window).width()
-                var nbImage = Math.round(totalWidth / 230) ;
-                switch (row) { 
-                    case 1:
-                        if(this.running1 ){
-                            this.recettes1.push(response.data);
-                            this.key1 ++;
-                            if(this.recettes1.length >= nbImage){
-                                this.ready1= true;
-                                this.launch(1)
+            if(this['loading'+row] == false){
+                this['loading'+row] = true;
+                axios.get('/crawlRecettes')
+                .then((response)=>{
+                    var totalWidth =  $(window).width()
+                    var nbImage = Math.round(totalWidth / 230) ;
+                    this['loading'+row] = true;
+                    switch (row) { 
+                        case 1:
+                            if(this.running1 ){
+                                this.recettes1.push(response.data);
+                                this.key1 ++;
+                                if(this.recettes1.length >= nbImage){
+                                    this.ready1= true;
+                                    this.launch(1)
+                                }
                             }
-                        }
-                        break;
-                    case 2:
-                        if(this.running2 ){
-                            this.recettes2.push(response.data);
-                            if(this.recettes2.length >= nbImage){
-                                this.ready2= true;
-                                
+                            break;
+                        case 2:
+                            if(this.running2 ){
+                                this.recettes2.push(response.data);
+                                if(this.recettes2.length >= nbImage){
+                                    this.ready2= true;
+                                    
+                                }
                             }
-                        }
-                        break;
-                    case 3:
-                        if(this.running3 ){
-                            this.recettes3.push(response.data);
-                            if(this.recettes3.length >= nbImage){
-                                this.ready3= true;
+                            break;
+                        case 3:
+                            if(this.running3 ){
+                                this.recettes3.push(response.data);
+                                if(this.recettes3.length >= nbImage){
+                                    this.ready3= true;
+                                }
                             }
-                        }
-                        break;
-                }
-            },(error)=>{
-                console.log(error);
-            });
+                            break;
+                    }
+                },(error)=>{
+                    console.log(error);
+                });
+            }
         },
         getMore(nb){
             for (let index = 0; index < nb; index++) {
@@ -293,11 +297,8 @@ export default {
         
         setTimeout( ()=>{
             this.show = true;
-            this.getMore(nbImage +1);
             setTimeout( () =>{
-                this.loading = true;
-                this.loading2 = true;
-                this.loading3 = true;
+                this.getMore(nbImage +1);
             },1000)
         },500)
         
