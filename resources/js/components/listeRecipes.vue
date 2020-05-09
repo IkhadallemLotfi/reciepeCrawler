@@ -102,51 +102,6 @@ export default {
             loading3 : Boolean(false),
         }
     },
-    watch: {
-        ready1 : function (old, val){
-            if(this.ready1){
-                this.margin1 -= 6.2
-                console.log('lol')
-                setInterval(() => {
-                    if(this.running1 ){
-                        var totalWidth =  $(window).width()
-                        var nbImage = Math.round(totalWidth / 230) ;
-                        if(this.recettes1.length < nbImage +5 ){
-                            this.crawlRecettes(1)
-                        }
-                    }
-                },1000)
-                setInterval(() =>{
-                    if(this.running1 && this.ready1){
-                        console.log('test');
-                        this.margin1 -= 6.2
-                    }
-                },10000)
-                setInterval(() => {
-                    var nodes = document.getElementById('carousel').childNodes
-                    if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
-                        this.recettes1.splice(0,1)
-                        this.padding1 += 6.3 ;
-                        if(this.running1 ){
-                            var totalWidth =  $(window).width()
-                            var nbImage = Math.round(totalWidth / 230) ;
-                            if(this.recettes1.length < nbImage +5 ){
-                                this.crawlRecettes(1)
-                            }
-                        }
-                    }
-                    var totalWidth =  $(window).width()
-                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
-                        this.ready1 = false;
-                    }else{
-                        this.ready1 = true;
-                    }
-                },250)
-            }
-        },
-
-
-    },
     methods:{
         getBGColor(){
             var number = Math.round(Math.random() * 10)
@@ -217,6 +172,45 @@ export default {
             }
             
         },
+        launch(row){
+            this.margin1 -= 6.2
+            console.log('lol')
+            setInterval(() => {
+                if(this.running1 ){
+                    var totalWidth =  $(window).width()
+                    var nbImage = Math.round(totalWidth / 230) ;
+                    if(this.recettes1.length < nbImage +5 ){
+                        this.crawlRecettes(1)
+                    }
+                }
+            },1000)
+            setInterval(() =>{
+                if(this.running1 && this.ready1){
+                    console.log('test');
+                    this.margin1 -= 6.2
+                }
+            },10000)
+            setInterval(() => {
+                var nodes = document.getElementById('carousel').childNodes
+                if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
+                    this.recettes1.splice(0,1)
+                    this.padding1 += 6.3 ;
+                    if(this.running1 ){
+                        var totalWidth =  $(window).width()
+                        var nbImage = Math.round(totalWidth / 230) ;
+                        if(this.recettes1.length < nbImage +5 ){
+                            this.crawlRecettes(1)
+                        }
+                    }
+                }
+                var totalWidth =  $(window).width()
+                if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
+                    this.ready1 = false;
+                }else{
+                    this.ready1 = true;
+                }
+            },250)
+        },
         resumeHover(row){
             switch (row) {
                 case 1:
@@ -253,6 +247,7 @@ export default {
                             this.key1 ++;
                             if(this.recettes1.length >= nbImage){
                                 this.ready1= true;
+                                this.launch(1)
                             }
                         }
                         break;
@@ -261,6 +256,7 @@ export default {
                             this.recettes2.push(response.data);
                             if(this.recettes2.length >= nbImage){
                                 this.ready2= true;
+                                
                             }
                         }
                         break;
