@@ -278,6 +278,7 @@ export default {
                             break;
                     }
                 },(error)=>{
+                    this.loading1 = false;
                     console.log(error);
                 });
             }
