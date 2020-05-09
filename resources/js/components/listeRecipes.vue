@@ -206,7 +206,10 @@ export default {
                 var totalWidth =  $(window).width()
                 if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
                     this.ready1 = false;
+                    alert();
+
                 }else{
+                    alert('bad');
                     this.ready1 = true;
                 }
             },250)
