@@ -116,10 +116,8 @@ export default {
                     }
                 },1000)
                 setInterval(() =>{
-                    alert();
                     if(this.running1 && this.ready1){
                         this.margin1 -= 6.2
-                        console.log(this.running1)
                     }
                 },10000)
                 setInterval(() => {
@@ -133,9 +131,9 @@ export default {
                     }
                     var totalWidth =  $(window).width()
                     if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
-                        this.running1 = false;
+                        this.ready1 = false;
                     }else{
-                        this.running1 = true;
+                        this.ready1 = true;
                     }
                 },250)
             }
@@ -176,7 +174,6 @@ export default {
                     if(this.ready1){
                         var boxOne = document.getElementById('carousel')
                         this.running1 = false;
-                        console.log(this.running1);
                     }
                     break;
                 
