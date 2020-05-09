@@ -120,7 +120,6 @@ export default {
                     if(this.running1 && this.ready1){
                         this.margin1 -= 6.2
                         console.log(this.running1)
-                        console.log(this.ready1)
                     }
                 },10000)
                 setInterval(() => {
@@ -177,6 +176,7 @@ export default {
                     if(this.ready1){
                         var boxOne = document.getElementById('carousel')
                         this.running1 = false;
+                        console.log(this.running1);
                     }
                     break;
                 
