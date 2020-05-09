@@ -106,6 +106,7 @@ export default {
         ready1 : function (old, val){
             if(this.ready1){
                 this.margin1 -= 6.2
+                console.log('lol')
                 setInterval(() => {
                     if(this.running1 ){
                         var totalWidth =  $(window).width()
@@ -135,7 +136,7 @@ export default {
                         }
                     }
                     var totalWidth =  $(window).width()
-                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().x < totalWidth ){
+                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
                         this.ready1 = false;
                     }else{
                         this.ready1 = true;
