@@ -180,7 +180,7 @@ export default {
                     var totalWidth =  $(window).width()
                     var nbImage = Math.round(totalWidth / 230) ;
                     if(this.recettes1.length < nbImage +5 ){
-                        this.crawlRecettes(1)
+                        this.crawlRecettes(1,false)
                     }
                 }
             },1000)
@@ -199,7 +199,7 @@ export default {
                         var totalWidth =  $(window).width()
                         var nbImage = Math.round(totalWidth / 230) ;
                         if(this.recettes1.length < nbImage +5 ){
-                            this.crawlRecettes(1)
+                            this.crawlRecettes(1,false)
                         }
                     }
                 }
@@ -238,8 +238,8 @@ export default {
                     break;
             }
         },
-        crawlRecettes(row){
-            if(this.loading1 == false){
+        crawlRecettes(row,start){
+            if(this.loading1 == false || start == true){
                 this.loading1 = true;
                 axios.get('/crawlRecettes')
                 .then((response)=>{
@@ -284,7 +284,7 @@ export default {
         },
         getMore(nb){
             for (let index = 0; index < nb; index++) {
-                this.crawlRecettes(1);
+                this.crawlRecettes(1,true);
             }
         }
     },
