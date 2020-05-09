@@ -135,7 +135,7 @@ export default {
                         }
                     }
                     var totalWidth =  $(window).width()
-                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().right < totalWidth ){
+                    if ( this.ready1 && document.getElementById('loading1').getBoundingClientRect().x < totalWidth ){
                         this.ready1 = false;
                     }else{
                         this.ready1 = true;
