@@ -173,8 +173,7 @@ export default {
             
         },
         launch(row){
-            console.log(this.margin1)
-            if(this.margin1 == 0 ){ // on lance les timer une seule fois
+            if(this.margin1 == 0){
                 setInterval(() => {
                     if(this.running1 ){
                         var totalWidth =  $(window).width()
@@ -184,6 +183,11 @@ export default {
                         }
                     }
                 },1000)
+                setInterval(() =>{
+                    if(this.running1 && this.ready1){
+                        this.margin1 -= 6.2
+                    }
+                },10000)
                 setInterval(() => {
                     var nodes = document.getElementById('carousel').childNodes
                     if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
