@@ -172,9 +172,14 @@ export default {
             }
             
         },
+        moveCarousel(row){
+            setInterval(() =>{
+                if(this.running1 && this.ready1){
+                    this.margin1 -= 6.2
+                }
+            },10000)
+        },
         launch(row){
-            this.margin1 -= 6.2
-            console.log('lol')
             setInterval(() => {
                 if(this.running1 ){
                     var totalWidth =  $(window).width()
@@ -184,12 +189,6 @@ export default {
                     }
                 }
             },1000)
-            setInterval(() =>{
-                if(this.running1 && this.ready1){
-                    console.log('test');
-                    this.margin1 -= 6.2
-                }
-            },10000)
             setInterval(() => {
                 var nodes = document.getElementById('carousel').childNodes
                 if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
@@ -252,6 +251,9 @@ export default {
                                 this.recettes1.push(response.data);
                                 this.key1 ++;
                                 if(this.recettes1.length >= nbImage){
+                                    if(this.margin1 == 0 ){
+                                        this.moveCarousel(1)
+                                    }
                                     if(this.ready1 == false){
                                         this.ready1= true;
                                         this.launch(1)
