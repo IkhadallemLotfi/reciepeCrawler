@@ -116,8 +116,11 @@ export default {
                     }
                 },1000)
                 setInterval(() =>{
+                    alert();
                     if(this.running1 && this.ready1){
                         this.margin1 -= 6.2
+                        console.log(this.running1)
+                        console.log(this.ready1)
                     }
                 },10000)
                 setInterval(() => {
@@ -195,7 +198,6 @@ export default {
                 switch (row) {
                     case 1:
                         this.savedMargin1 = this.margin1
-                        console.log(this.savedMargin1)
                         break;
                     case 2:
                         
