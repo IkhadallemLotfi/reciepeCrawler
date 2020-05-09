@@ -219,8 +219,14 @@ export default {
         resumeHover(row){
             switch (row) {
                 case 1:
+                    var previouStateRun = this.running1
                     this.running1 = true
                     var boxOne = document.getElementById('carousel')
+                    boxOne.classList.add('transition')
+                    if(this.ready1 && previouStateRun == false){
+                        this.margin1 = this.savedMargin1 - 0.001;
+                        this.margin1 = this.savedMargin1 + 0.001;
+                    }
                     break;
                 
                 case 2:
@@ -231,21 +237,6 @@ export default {
                 case 3:
                     var boxOne = document.getElementById('carousel3')
                     this.running3 = true;
-                    break;
-            }
-            boxOne.classList.add('transition')
-            switch (row) {
-                case 1:
-                    if(this.ready1){
-                        this.margin1 = this.savedMargin1 - 0.001;
-                        this.margin1 = this.savedMargin1 + 0.001;
-                    }
-                    break;
-                case 2:
-                    
-                    break;
-                case 3:
-                    
                     break;
             }
         },
