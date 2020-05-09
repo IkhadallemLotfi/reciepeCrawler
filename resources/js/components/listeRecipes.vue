@@ -173,6 +173,7 @@ export default {
             
         },
         launch(row){
+            console.log(this.margin1)
             if(this.margin1 == 0 ){ // on lance les timer une seule fois
                 setInterval(() => {
                     if(this.running1 ){
@@ -208,8 +209,6 @@ export default {
                 },250)
             }
             this.margin1 -= 6.2
-
-            
         },
         resumeHover(row){
             switch (row) {
