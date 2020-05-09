@@ -126,7 +126,11 @@ export default {
                         this.recettes1.splice(0,1)
                         this.padding1 += 6.3 ;
                         if(this.running1 ){
-                            this.crawlRecettes(1) 
+                            var totalWidth =  $(window).width()
+                            var nbImage = Math.round(totalWidth / 230) ;
+                            if(this.recettes1.length < nbImage +5 ){
+                                this.crawlRecettes(1)
+                            }
                         }
                     }
                     var totalWidth =  $(window).width()
