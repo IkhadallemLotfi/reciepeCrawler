@@ -183,7 +183,7 @@ options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) App
 
 trouve = False 
 while trouve == False :
-    choix = ressources[randrange(0,len(ressources)-1)]
+    choix = ressources[randrange(1,len(ressources)-1)]
 
     headers= {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
 
