@@ -125,7 +125,6 @@ export default {
                 },10000)
                 setInterval(() => {
                     var nodes = document.getElementById('carousel'+row).childNodes
-                    console.log(row)
                     if( nodes != null && nodes.length > 2 && nodes[1].getBoundingClientRect().x < 0){
                         this.rows[row].recettes.splice(0,1)
                         this.rows[row].padding += 6.3 ;
@@ -162,37 +161,33 @@ export default {
             }
         },
         crawlRecettes(row,start){
-      
-            if(this.rows[row].loading == false || start == true){
-                this.rows[row].loading = true;
-                axios.get('/crawlRecettes')
-                .then((response)=>{
-                    console.log(response.data.src)
-                    if(response.data.src != null ){
-                        var totalWidth =  $(window).width()
-                        var nbImage = Math.round(totalWidth / 230) ;
-                        this.rows[row].loading = false
+            
+            axios.get('/crawlRecettes')
+            .then((response)=>{
+                console.log(response.data.src)
+                if(response.data.src != null ){
+                    var totalWidth =  $(window).width()
+                    var nbImage = Math.round(totalWidth / 230) ;
+                    console.log(response.data)
+                    if(this.rows[row].running ){
+                        this.rows[row].recettes.push(response.data);
                         console.log(response.data)
-                        if(this.rows[row].running ){
-                            this.rows[row].recettes.push(response.data);
-                            console.log(response.data)
-                            
-                            if(this.rows[row].recettes.length >= nbImage){
-                                if(this.rows[row].ready == false){
-                                    this.rows[row].ready= true;
-                                    this.launch(row)
-                                }
-                            }else{
-                              
-                                this.crawlRecettes(row,true)
+                        
+                        if(this.rows[row].recettes.length >= nbImage){
+                            if(this.rows[row].ready == false){
+                                this.rows[row].ready= true;
+                                this.launch(row)
                             }
+                        }else{
+                            
+                            this.crawlRecettes(row,true)
                         }
                     }
-                },(error)=>{
-                    this.rows[row].loading = false;
-                    console.log(error);
-                });
-            }
+                }
+            },(error)=>{
+                console.log(error);
+            });
+
         },
     },
 
