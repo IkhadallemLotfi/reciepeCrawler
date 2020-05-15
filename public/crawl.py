@@ -263,7 +263,7 @@ while trouve == False :
     elif(choix['case'] == 5) :
         ###driver = webdriver.Chrome(executable_path=r"chromedriver.exe", options=options)
         print("/app/chromedriver/bin/chromedriver")
-        driver = webdriver.Chrome(executable_path="/app/chromedriver/bin/chromedriver", options=options)
+        driver = webdriver.Chrome(executable_path="/app/.chromedriver/bin/chromedriver", options=options)
         site = choix['site']
         page = randrange(1,choix['max_pages'])
         driver.get(site+str(page) )
