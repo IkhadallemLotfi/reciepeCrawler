@@ -291,12 +291,14 @@ while trouve == False :
                         j=j+1
             if len(photos) > 0 :
                 trouve= True
+                
                 photo = photos[randrange(0, len(photos)-1 )]
 
                 return_object = {
                     'link' : "https://www.cuisineaz.com"+photo['link'],
                     'src' :photo['src'] ,
                 }
+                driver.close()
     elif(choix['case'] == 6 ) :
         site = choix['site']
         page = randrange(1,choix['max_pages'])
