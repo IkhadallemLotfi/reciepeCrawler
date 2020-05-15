@@ -267,7 +267,7 @@ while trouve == False :
         page = randrange(1,choix['max_pages'])
         driver.get(site+str(page) )
         time.sleep(5)
-        k=0
+        k=1
         while k < 10080 :
             driver.execute_script("window.scrollTo(0, "+str(k)+");")
             k=k+50
