@@ -168,7 +168,7 @@ ressources = [
 ];
 
 options = webdriver.ChromeOptions()
-options.binary_location = "/app/.apt/usr/bin/google-chrome"
+options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--incognito')
 options.add_argument('--no-sandbox')
@@ -262,8 +262,7 @@ while trouve == False :
         trouve = True
     elif(choix['case'] == 5) :
         ###driver = webdriver.Chrome(executable_path=r"chromedriver.exe", options=options)
-        print("/app/chromedriver/bin/chromedriver")
-        driver = webdriver.Chrome(executable_path="/app/.chromedriver/bin/chromedriver", options=options)
+        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=options)
         site = choix['site']
         page = randrange(1,choix['max_pages'])
         driver.get(site+str(page) )
