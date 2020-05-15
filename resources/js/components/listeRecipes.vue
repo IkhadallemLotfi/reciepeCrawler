@@ -256,7 +256,7 @@ export default {
                                 if(this.running1 ){
                                     this.recettes1.push(response.data);
                                     console.log(response.data)
-                                    alert();
+                                    
                                     this.key1 ++;
                                     if(this.recettes1.length >= nbImage){
                                         if(this.ready1 == false){
@@ -264,6 +264,7 @@ export default {
                                             this.launch(1)
                                         }
                                     }else{
+                                        alert()
                                         this.crawlRecettes(1,true)
                                     }
                                 }
