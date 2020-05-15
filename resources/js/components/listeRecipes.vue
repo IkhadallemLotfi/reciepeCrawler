@@ -250,6 +250,7 @@ export default {
                         case 1:
                             if(this.running1 ){
                                 this.recettes1.push(response.data);
+                                console.log(response.data)
                                 this.key1 ++;
                                 if(this.recettes1.length >= nbImage){
                                     if(this.ready1 == false){
