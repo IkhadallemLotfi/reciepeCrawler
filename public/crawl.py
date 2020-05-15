@@ -168,7 +168,7 @@ ressources = [
 ];
 
 options = webdriver.ChromeOptions()
-options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+options.binary_location = "/app/.apt/usr/bin/google-chrome"
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--incognito')
 options.add_argument('--no-sandbox')
@@ -262,8 +262,42 @@ while trouve == False :
         trouve = True
     elif(choix['case'] == 5) :
         ###driver = webdriver.Chrome(executable_path=r"chromedriver.exe", options=options)
-        print("path is "+os.environ.get("CHROMEDRIVER_PATH"))
-        
+        print("/app/chromedriver/bin/chromedriver")
+        driver = webdriver.Chrome(executable_path="/app/chromedriver/bin/chromedriver", options=options)
+        site = choix['site']
+        page = randrange(1,choix['max_pages'])
+        driver.get(site+str(page) )
+        time.sleep(5)
+        k=0
+        while k < 10080 :
+            driver.execute_script("window.scrollTo(0, "+str(k)+");")
+            k=k+50
+        k=0
+        soup = BeautifulSoup((driver.page_source).encode('utf-8'), 'lxml');
+        photos_raw = soup.select('article.tile.recipe img');
+        links = soup.select('article.tile.recipe div.tile_thumbnail a');
+        if len(photos_raw) > 0 : 
+            photos = [] 
+            for p in photos_raw: 
+                
+                if("default" not in p['data-src']):
+                    photos.append(p)
+                    j= 0;
+                    while j < len(links):
+                        
+                        src = links[j].select('img')
+                        if( src[0]['data-src'] == p['data-src'] ):
+                            p['link'] = links[j]['href']
+                            j = len(links)
+                        j=j+1
+            if len(photos) > 0 :
+                trouve= True
+                photo = photos[randrange(0, len(photos)-1 )]
+
+                return_object = {
+                    'link' : "https://www.cuisineaz.com"+photo['link'],
+                    'src' :photo['src'] ,
+                }
     elif(choix['case'] == 6 ) :
         site = choix['site']
         page = randrange(1,choix['max_pages'])
