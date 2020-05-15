@@ -244,13 +244,12 @@ export default {
                 this.loading1 = true;
                 axios.get('/crawlRecettes')
                 .then((response)=>{
+                    console.log(response.data.src)
                     if(response.data.src != null ){
                         var totalWidth =  $(window).width()
                         var nbImage = Math.round(totalWidth / 230) ;
                         this.loading1 = false
                         console.log(response.data)
-                        console.log('hello')
-                        console.log(nbImage)
                         switch (row) { 
                             case 1:
                                 if(this.running1 ){
