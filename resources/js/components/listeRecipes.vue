@@ -241,42 +241,45 @@ export default {
         crawlRecettes(row,start){
             if(this.loading1 == false || start == true){
                 this.loading1 = true;
-                axios.get('/crawlRecettes',{timeout : 10000})
+                axios.get('/crawlRecettes')
                 .then((response)=>{
-                    var totalWidth =  $(window).width()
-                    var nbImage = Math.round(totalWidth / 230) ;
-                    this.loading1 = false;
-                    switch (row) { 
-                        case 1:
-                            if(this.running1 ){
-                                this.recettes1.push(response.data);
-                                console.log(response.data)
-                                this.key1 ++;
-                                if(this.recettes1.length >= nbImage){
-                                    if(this.ready1 == false){
-                                        this.ready1= true;
-                                        this.launch(1)
+                    if(response.data != ''){
+                        var totalWidth =  $(window).width()
+                        var nbImage = Math.round(totalWidth / 230) ;
+                        this.loading1 = false;
+                        
+                        switch (row) { 
+                            case 1:
+                                if(this.running1 ){
+                                    this.recettes1.push(response.data);
+                                    console.log(response.data)
+                                    this.key1 ++;
+                                    if(this.recettes1.length >= nbImage){
+                                        if(this.ready1 == false){
+                                            this.ready1= true;
+                                            this.launch(1)
+                                        }
                                     }
                                 }
-                            }
-                            break;
-                        case 2:
-                            if(this.running2 ){
-                                this.recettes2.push(response.data);
-                                if(this.recettes2.length >= nbImage){
-                                    this.ready2= true;
-                                    
+                                break;
+                            case 2:
+                                if(this.running2 ){
+                                    this.recettes2.push(response.data);
+                                    if(this.recettes2.length >= nbImage){
+                                        this.ready2= true;
+                                        
+                                    }
                                 }
-                            }
-                            break;
-                        case 3:
-                            if(this.running3 ){
-                                this.recettes3.push(response.data);
-                                if(this.recettes3.length >= nbImage){
-                                    this.ready3= true;
+                                break;
+                            case 3:
+                                if(this.running3 ){
+                                    this.recettes3.push(response.data);
+                                    if(this.recettes3.length >= nbImage){
+                                        this.ready3= true;
+                                    }
                                 }
-                            }
-                            break;
+                                break;
+                        }
                     }
                 },(error)=>{
                     this.loading1 = false;
