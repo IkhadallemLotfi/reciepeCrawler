@@ -248,12 +248,15 @@ export default {
                         var totalWidth =  $(window).width()
                         var nbImage = Math.round(totalWidth / 230) ;
                         this.loading1 = false
-                        
+                        console.log(response.data)
+                        console.log('hello')
+                        console.log(nbImage)
                         switch (row) { 
                             case 1:
                                 if(this.running1 ){
                                     this.recettes1.push(response.data);
                                     console.log(response.data)
+                                    alert();
                                     this.key1 ++;
                                     if(this.recettes1.length >= nbImage){
                                         if(this.ready1 == false){
@@ -262,23 +265,6 @@ export default {
                                         }
                                     }else{
                                         this.crawlRecettes(1,true)
-                                    }
-                                }
-                                break;
-                            case 2:
-                                if(this.running2 ){
-                                    this.recettes2.push(response.data);
-                                    if(this.recettes2.length >= nbImage){
-                                        this.ready2= true;
-                                        
-                                    }
-                                }
-                                break;
-                            case 3:
-                                if(this.running3 ){
-                                    this.recettes3.push(response.data);
-                                    if(this.recettes3.length >= nbImage){
-                                        this.ready3= true;
                                     }
                                 }
                                 break;
