@@ -184,7 +184,7 @@ options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) App
 trouve = False 
 while trouve == False :
     choix = ressources[randrange(1,len(ressources)-1)]
-    choix = ressources[len(ressources) -7]
+    choix = ressources[len(ressources) -8]
 
     headers= {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
 
@@ -261,22 +261,17 @@ while trouve == False :
         }
         trouve = True
     elif(choix['case'] == 5) :
-        ###driver = webdriver.Chrome(executable_path=r"chromedriver.exe", options=options)
-        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=options)
         site = choix['site']
         page = randrange(1,choix['max_pages'])
-        driver.get(site+str(page) )
+        res = requests.get(site+str(page) )
         time.sleep(5)
-        k=1
-        while k < 10080 :
-            driver.execute_script("window.scrollTo(0, "+str(k)+");")
-            k=k+50
         k=0
-        soup = BeautifulSoup((driver.page_source).encode('utf-8'), 'lxml');
+        soup = BeautifulSoup( res.text , 'lxml');
         photos_raw = soup.select('article.tile.recipe img');
         links = soup.select('article.tile.recipe div.tile_thumbnail a');
         if len(photos_raw) > 0 : 
             photos = [] 
+            
             for p in photos_raw: 
                 
                 if("default" not in p['data-src']):
@@ -296,9 +291,8 @@ while trouve == False :
 
                 return_object = {
                     'link' : "https://www.cuisineaz.com"+photo['link'],
-                    'src' :photo['src'] ,
+                    'src' :photo['data-src'] ,
                 }
-                driver.close()
     elif(choix['case'] == 6 ) :
         site = choix['site']
         page = randrange(1,choix['max_pages'])
