@@ -260,6 +260,8 @@ export default {
                                             this.ready1= true;
                                             this.launch(1)
                                         }
+                                    }else{
+                                        this.crawlRecettes(1,true)
                                     }
                                 }
                                 break;
@@ -288,11 +290,6 @@ export default {
                 });
             }
         },
-        getMore(nb){
-            for (let index = 0; index < nb; index++) {
-                this.crawlRecettes(1,true);
-            }
-        }
     },
 
     
@@ -304,7 +301,7 @@ export default {
         setTimeout( ()=>{
             this.show = true;
             setTimeout( () =>{
-                this.getMore(nbImage +1);
+                this.crawlRecettes(1,true);
             },1000)
         },500)
         
