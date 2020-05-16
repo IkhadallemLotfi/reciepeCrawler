@@ -314,7 +314,7 @@ while trouve == False :
     elif(choix['case'] == 7):
         site = choix['site']
         page = randrange(1,choix['max_pages'])
-        res = requests.get(site+str(page)+'.html', headers=headers)
+        res = requests.get(site+str(page), headers=headers)
         soup = BeautifulSoup(res.text, 'lxml');
         divs = soup.select('div.gallery-image')
         index = randrange(0,len(divs)-1)
