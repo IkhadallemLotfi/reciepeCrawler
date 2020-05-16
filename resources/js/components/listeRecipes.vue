@@ -145,13 +145,13 @@ export default {
             }
         },
         launch(row){
-            console.log('lauch row :   '+row)
+            console.log('launch row :   '+row)
             if(this.rows[row].margin == 0){
                 setInterval(() => {
                     if(this.rows[row].running ){
                         var totalWidth =  $(window).width()
                         var nbImage = Math.round(totalWidth / 230) ;
-                        if(this.rows[row].recettes.length < nbImage +10 ){
+                        if(this.rows[row].recettes.length < nbImage +5 ){
                             this.crawlRecettes(row,false)
                         }
                     }
@@ -175,6 +175,7 @@ export default {
                         }
                     }
                     var totalWidth =  $(window).width()
+                    // check if loading screen has arrived
                     if ( this.rows[row].ready && document.getElementById('loading'+row).getBoundingClientRect().right < totalWidth ){
                         this.rows[row].ready = false;
                         var boxOne = document.getElementById('carousel'+row)
@@ -184,8 +185,11 @@ export default {
                         boxOne.style.marginLeft = marginLeft;
                     }
                 },250)
+                var boxOne = document.getElementById('carousel'+row)
+                boxOne.classList.add('transition')
+                this.rows[row].margin -= 6.2
             }
-            this.rows[row].margin -= 6.2
+            
         },
         resumeHover(row){
             console.log('resume hover row :   '+row)
