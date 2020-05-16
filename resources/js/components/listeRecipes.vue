@@ -13,7 +13,7 @@
             <div v-bind:style="{'margin-left' : rows[0].margin+'cm'}" id="carousel0" :key="key1" 
             class="transition" @mouseover="endHover(0)" @mouseleave="resumeHover(0)"   >
                 <a v-for="(destination,index) in rows[0].recettes" :href="destination.link"  
-                target="_blank" class="col-md-1" :id="index" @click="this.endHover(0);this.endHover(1);this.endHover(2)" >
+                target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
                 <a class="col-md-1" style="animation-duration: 2s" id="loading0">
@@ -29,7 +29,7 @@
             <div v-bind:style="{'margin-left' : rows[1].margin+'cm'}" id="carousel1" :key="key2" 
             class="transition" @mouseover="endHover(1)" @mouseleave="resumeHover(1)"   >
                 <a v-for="(destination,index) in rows[1].recettes" :href="destination.link"   
-                target="_blank" class="col-md-1" :id="index" @click="this.endHover(0);this.endHover(1);this.endHover(2)" >
+                target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
                 <a class="col-md-1" style="animation-duration: 2s" id="loading1">
@@ -45,7 +45,7 @@
             <div v-bind:style="{'margin-left' : rows[2].margin+'cm'}" id="carousel2" :key="key3" 
             class="transition" @mouseover="endHover(2)" @mouseleave="resumeHover(2)"   >
                 <a v-for="(destination,index) in rows[2].recettes" :href="destination.link"  
-                target="_blank" class="col-md-1" :id="index" @click="this.endHover(0);this.endHover(1);this.endHover(2)" >
+                target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
                 <a class="col-md-1" style="animation-duration: 2s" id="loading2">
@@ -129,6 +129,7 @@ export default {
             }
         },
         endHover(row){
+            console.log('end hover row :   '+row)
             if(this.rows[row].ready){
                 var boxOne = document.getElementById('carousel'+row)
                 this.rows[row].running = false;
@@ -144,6 +145,7 @@ export default {
             }
         },
         launch(row){
+            console.log('lauch row :   '+row)
             if(this.rows[row].margin == 0){
                 setInterval(() => {
                     if(this.rows[row].running ){
@@ -186,7 +188,7 @@ export default {
             this.rows[row].margin -= 6.2
         },
         resumeHover(row){
-            
+            console.log('resume hover row :   '+row)
             var previouStateRun = this.rows[row].running
             this.rows[row].running = true
             var boxOne = document.getElementById('carousel'+row)
