@@ -239,16 +239,14 @@ export default {
         var nbImage = Math.round(totalWidth / 230) ;
         
         setTimeout( ()=>{
-            this.show = true;
-            setTimeout( () =>{
-                for (let index = 0; index < nbImage +2; index++) {
-                    this.crawlRecettes(0,true);
-                    this.crawlRecettes(1,true);
-                    this.crawlRecettes(2,true);
-                }
-            },1000)
+            this.show = true;    
         },500)
-        
+
+        for (let index = 0; index < nbImage +2; index++) {
+            this.crawlRecettes(0,true);
+            this.crawlRecettes(1,true);
+            this.crawlRecettes(2,true);
+        }
         $(window).focus( $.proxy(function(){
             this.resumeHover(0)
         },this));
