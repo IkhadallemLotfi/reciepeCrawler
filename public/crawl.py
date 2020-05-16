@@ -143,27 +143,33 @@ ressources = [
     },
     {
         'case' : 7,
-        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=aperitif&search%5Bsort%5D=&search%5Bdirection%5D=&search%5Bpage%5D=1",
+        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=aperitif&search%5Bsort%5D=&search%5Bdirection%5D=&search%5Bpage%5D=",
+        'max_pages' : 119,
     },
     {
         'case' : 7,
-        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=entree&search%5Bsort%5D=ASC&search%5Bdirection%5D=&search%5Bpage%5D=1",
+        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=entree&search%5Bsort%5D=ASC&search%5Bdirection%5D=&search%5Bpage%5D=",
+        'max_pages' : 430,
     },
     {
         'case' : 7,
-        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=plat&search%5Bsort%5D=ASC&search%5Bdirection%5D=&search%5Bpage%5D=1",
+        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=plat&search%5Bsort%5D=ASC&search%5Bdirection%5D=&search%5Bpage%5D=",
+        'max_pages' : 500,
     },
     {
         'case' : 7,
-        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=dessert&search%5Bsort%5D=ASC&search%5Bdirection%5D=&search%5Bpage%5D=1",
+        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=dessert&search%5Bsort%5D=ASC&search%5Bdirection%5D=&search%5Bpage%5D=",
+        'max_pages' : 500,
     },
     {
         'case' : 7,
-        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=sauce&search%5Bsort%5D=&search%5Bdirection%5D=&search%5Bpage%5D=1",
+        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=sauce&search%5Bsort%5D=&search%5Bdirection%5D=&search%5Bpage%5D=",
+        'max_pages' : 20,
     },
     {
         'case' : 7 ,
-        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=boisson&search%5Bsort%5D=ASC&search%5Bdirection%5D=&search%5Bpage%5D=1"
+        'site' : "https://www.cuisineactuelle.fr/content/search?search%5Bkeyword%5D=&search%5Bdishtypes%5D%5B%5D=boisson&search%5Bsort%5D=ASC&search%5Bdirection%5D=&search%5Bpage%5D=",
+        'max_pages' : 37,
     }
 ];
 
@@ -184,7 +190,7 @@ options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) App
 trouve = False 
 while trouve == False :
     #choix = ressources[randrange(1,len(ressources)-1)]
-    choix = ressources[len(ressources)-8]
+    choix = ressources[len(ressources)-1]
 
     headers= {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
 
@@ -307,28 +313,9 @@ while trouve == False :
         trouve = True
     elif(choix['case'] == 7):
         site = choix['site']
-        res = requests.get(site, headers=headers,timeout=5)
+        page = randrange(1,choix['max_pages'])
+        res = requests.get(site+str(page)+'.html', headers=headers)
         soup = BeautifulSoup(res.text, 'lxml');
-        items = soup.select('li.item.m-right-xs')
-        maxPages = items[len(items)-1].text
-        page = randrange(1,int(maxPages))
-        min_diff = int(page)
-        i = 0
-        lien = ''
-        while min_diff != 0 :
-            j = 0
-            while j < len(items) :
-                if items[j].text.strip() != '<' and items[j].text.strip() != '>' and abs(int(items[j].text) - int(page)) < min_diff  :
-                    min_diff = abs(int(items[j].text) - int(page))
-                    lien = items[j].select('a')[0]['href'];
-                if min_diff == 0 :
-                    break;
-                j=j+1
-            res= requests.get('https://www.cuisineactuelle.fr'+lien, headers=headers, timeout=5)
-            soup = BeautifulSoup(res.text, 'lxml');
-            items = soup.select('li.item.m-right-xs')
-            time.sleep(1)
-            
         divs = soup.select('div.gallery-image')
         index = randrange(0,len(divs)-1)
         lien = divs[index].select('a.title')[0]['href']
@@ -338,7 +325,6 @@ while trouve == False :
                     'link' : 'https://www.cuisineactuelle.fr'+lien,
                     'src' :image,
                 }
-        break
     
 if trouve == True :
     print(json.dumps(return_object))
