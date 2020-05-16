@@ -185,10 +185,10 @@ export default {
                         boxOne.style.marginLeft = marginLeft;
                     }
                 },250)
-                var boxOne = document.getElementById('carousel'+row)
-                boxOne.classList.add('transition')
-                this.rows[row].margin -= 6.2
             }
+            var boxOne = document.getElementById('carousel'+row)
+            boxOne.classList.add('transition')
+            this.rows[row].margin -= 6.2
             
         },
         resumeHover(row){
