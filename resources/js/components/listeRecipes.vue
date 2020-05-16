@@ -10,9 +10,9 @@
 
         <div class="container-row-images row col-md-12">
             <div v-bind:style="{'padding-left' : rows[0].padding+'cm'}" ></div>
-            <div v-bind:style="{'margin-left' : rows[0].margin+'cm'}" id="carousel0" :key="key1" 
+            <div v-bind:style="{'margin-left' : rows[0].margin+'cm'}" id="carousel0"  
             class="transition" @mouseover="endHover(0)" @mouseleave="resumeHover(0)"   >
-                <a v-for="(destination,index) in rows[0].recettes" :href="destination.link"  
+                <a v-for="(destination,index) in rows[0].recettes" :href="destination.link" :key="index+'car0'"
                 target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
@@ -26,9 +26,9 @@
         </div>
         <div class="container-row-images row col-md-12">
             <div v-bind:style="{'padding-left' : rows[1].padding+'cm'}" ></div>
-            <div v-bind:style="{'margin-left' : rows[1].margin+'cm'}" id="carousel1" :key="key2" 
+            <div v-bind:style="{'margin-left' : rows[1].margin+'cm'}" id="carousel1" 
             class="transition" @mouseover="endHover(1)" @mouseleave="resumeHover(1)"   >
-                <a v-for="(destination,index) in rows[1].recettes" :href="destination.link"   
+                <a v-for="(destination,index) in rows[1].recettes" :href="destination.link"  :key="index+'car1'"  
                 target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
@@ -42,9 +42,9 @@
         </div>
         <div class="container-row-images row col-md-12">
             <div v-bind:style="{'padding-left' : rows[2].padding+'cm'}" ></div>
-            <div v-bind:style="{'margin-left' : rows[2].margin+'cm'}" id="carousel2" :key="key3" 
+            <div v-bind:style="{'margin-left' : rows[2].margin+'cm'}" id="carousel2"  
             class="transition" @mouseover="endHover(2)" @mouseleave="resumeHover(2)"   >
-                <a v-for="(destination,index) in rows[2].recettes" :href="destination.link"  
+                <a v-for="(destination,index) in rows[2].recettes" :href="destination.link" :key="index+'car2'"
                 target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
@@ -209,9 +209,6 @@ export default {
                     console.log(this.rows[row].running)
                     if(this.rows[row].running ){
                         this.rows[row].recettes.push(response.data);
-                        this.key1++;
-                        this.key2++;
-                        this.key3++;
                         
                         if(this.rows[row].recettes.length >= nbImage){
                             if(this.rows[row].ready == false){
