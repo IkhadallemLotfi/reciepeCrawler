@@ -249,10 +249,14 @@ export default {
         }
         $(window).focus( $.proxy(function(){
             this.resumeHover(0)
+            this.resumeHover(1)
+            this.resumeHover(2)
         },this));
 
         $(window).blur( $.proxy(function(){
             this.endHover(0)
+            this.endHover(1)
+            this.endHover(2)
         },this));
 
     },
