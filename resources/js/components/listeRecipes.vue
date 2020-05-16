@@ -200,7 +200,9 @@ export default {
         setTimeout( ()=>{
             this.show = true;
             setTimeout( () =>{
-                this.crawlRecettes(0,true);
+                for (let index = 0; index < nbImage +2; index++) {
+                    this.crawlRecettes(0,true);
+                }
             },1000)
         },500)
         
