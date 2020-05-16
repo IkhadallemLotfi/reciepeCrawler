@@ -24,7 +24,38 @@
                 </a>
             </div>
         </div>
-
+        <div class="container-row-images row col-md-12">
+            <div v-bind:style="{'padding-left' : rows[1].padding+'cm'}" ></div>
+            <div v-bind:style="{'margin-left' : rows[1].margin+'cm'}" id="carousel1"
+            class="transition" @mouseover="endHover(1)" @mouseleave="resumeHover(1)"   >
+                <a v-for="(destination,index) in rows[1].recettes" :href="destination.link" :key="index+'car2'"  
+                target="_blank" class="col-md-1" :id="index" @click="this.endHover(0);this.endHover(1);this.endHover(2)" >
+                    <img class="image-recette" :src="destination.src"> 
+                </a>
+                <a class="col-md-1" style="animation-duration: 2s" id="loading1">
+                    <div class="image-waiting" :style="{'background-color': getBGColor()}">
+                        <grid-loader :loading="true" color="white" 
+                        style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="container-row-images row col-md-12">
+            <div v-bind:style="{'padding-left' : rows[2].padding+'cm'}" ></div>
+            <div v-bind:style="{'margin-left' : rows[2].margin+'cm'}" id="carousel2"
+            class="transition" @mouseover="endHover(2)" @mouseleave="resumeHover(2)"   >
+                <a v-for="(destination,index) in rows[2].recettes" :href="destination.link" :key="index+'car1'"  
+                target="_blank" class="col-md-1" :id="index" @click="this.endHover(0);this.endHover(1);this.endHover(2)" >
+                    <img class="image-recette" :src="destination.src"> 
+                </a>
+                <a class="col-md-1" style="animation-duration: 2s" id="loading2">
+                    <div class="image-waiting" :style="{'background-color': getBGColor()}">
+                        <grid-loader :loading="true" color="white" 
+                        style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
+                    </div>
+                </a>
+            </div>
+        </div>
         <br>
     </div>
 </template>
@@ -202,6 +233,8 @@ export default {
             setTimeout( () =>{
                 for (let index = 0; index < nbImage +2; index++) {
                     this.crawlRecettes(0,true);
+                    this.crawlRecettes(1,true);
+                    this.crawlRecettes(2,true);
                 }
             },1000)
         },500)
