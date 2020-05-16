@@ -28,7 +28,7 @@
             <div v-bind:style="{'padding-left' : rows[1].padding+'cm'}" ></div>
             <div v-bind:style="{'margin-left' : rows[1].margin+'cm'}" id="carousel1" :key="key2" 
             class="transition" @mouseover="endHover(1)" @mouseleave="resumeHover(1)"   >
-                <a v-for="(destination,index) in rows[1].recettes" :href="destination.link" :key="index+'car2'"  
+                <a v-for="(destination,index) in rows[1].recettes" :href="destination.link"   
                 target="_blank" class="col-md-1" :id="index" @click="this.endHover(0);this.endHover(1);this.endHover(2)" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
@@ -44,7 +44,7 @@
             <div v-bind:style="{'padding-left' : rows[2].padding+'cm'}" ></div>
             <div v-bind:style="{'margin-left' : rows[2].margin+'cm'}" id="carousel2" :key="key3" 
             class="transition" @mouseover="endHover(2)" @mouseleave="resumeHover(2)"   >
-                <a v-for="(destination,index) in rows[2].recettes" :href="destination.link" :key="index+'car1'"  
+                <a v-for="(destination,index) in rows[2].recettes" :href="destination.link"  
                 target="_blank" class="col-md-1" :id="index" @click="this.endHover(0);this.endHover(1);this.endHover(2)" >
                     <img class="image-recette" :src="destination.src"> 
                 </a>
