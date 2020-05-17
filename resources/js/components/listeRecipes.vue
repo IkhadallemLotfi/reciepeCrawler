@@ -7,7 +7,7 @@
                 </div>
             </transition>
         </div>
-        <center><span class="header-text">Recettes Aléatoires</span></center>
+        <center><span class="header-text" v-bind:style="{'opacity' : opacityText}">Recettes Aléatoires</span></center>
         <div class="container-rows">
             <div class="container-row-images row col-md-12">
                 <div v-bind:style="{'padding-left' : rows[0].padding+'cm'}" ></div>
@@ -67,6 +67,7 @@ export default {
         return{ 
             logo: require('../../../public/img/logo.png'),
             show : Boolean(false),
+            opacityText : Number(0),
             key1 : Number(0),
             key2 : Number(0),
             key3 : Number(0),
@@ -241,6 +242,9 @@ export default {
         
         setTimeout( ()=>{
             this.show = true;    
+        },250)
+        setTimeout( ()=>{
+            this.opacityText = 1;    
         },500)
 
         for (let index = 0; index < nbImage +2; index++) {
@@ -272,6 +276,7 @@ export default {
     .header-text {
         font-family: 'Great Vibes', cursive;
         font-size: 60px;;
+        transition: all .5s;
     }
     .image-waiting{
         width: 6cm;
@@ -287,6 +292,7 @@ export default {
     .container{
         width: 100%;
     }
+    
 
     .container-row-images{ 
         width: 100%;
