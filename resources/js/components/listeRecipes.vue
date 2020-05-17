@@ -1,62 +1,63 @@
 <template>
     <div class="container">
-        <div class="row col-md-12">
+        <div class="row col-md-12" style="height:6.5cm">
             <transition name="fadeDown">
                 <div v-if="show" style="animation-duration: 1.5s" class="container-logo">
                     <img :src="logo">
                 </div>
             </transition>
         </div>
-
-        <div class="container-row-images row col-md-12">
-            <div v-bind:style="{'padding-left' : rows[0].padding+'cm'}" ></div>
-            <div v-bind:style="{'margin-left' : rows[0].margin+'cm'}" id="carousel0"  
-            class="transition" @mouseover="endHover(0)" @mouseleave="resumeHover(0)"   >
-                <a v-for="(destination,index) in rows[0].recettes" :href="destination.link" :key="index+'car0'"
-                target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
-                    <img class="image-recette" :src="destination.src"> 
-                </a>
-                <a class="col-md-1" style="animation-duration: 2s" id="loading0">
-                    <div class="image-waiting" :style="{'background-color': getBGColor()}">
-                        <grid-loader :loading="true" color="white" 
-                        style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
-                    </div>
-                </a>
+        <center><span class="header-text">Recettes Aléatoires</span></center>
+        <div class="container-rows">
+            <div class="container-row-images row col-md-12">
+                <div v-bind:style="{'padding-left' : rows[0].padding+'cm'}" ></div>
+                <div v-bind:style="{'margin-left' : rows[0].margin+'cm'}" id="carousel0"  
+                class="transition" @mouseover="endHover(0)" @mouseleave="resumeHover(0)"   >
+                    <a v-for="(destination,index) in rows[0].recettes" :href="destination.link" :key="index+'car0'"
+                    target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
+                        <img class="image-recette" :src="destination.src"> 
+                    </a>
+                    <a class="col-md-1" style="animation-duration: 2s" id="loading0">
+                        <div class="image-waiting" >
+                            <grid-loader :loading="true" color="white" 
+                            style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="container-row-images row col-md-12">
+                <div v-bind:style="{'padding-left' : rows[1].padding+'cm'}" ></div>
+                <div v-bind:style="{'margin-left' : rows[1].margin+'cm'}" id="carousel1" 
+                class="transition" @mouseover="endHover(1)" @mouseleave="resumeHover(1)"   >
+                    <a v-for="(destination,index) in rows[1].recettes" :href="destination.link"  :key="index+'car1'"  
+                    target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
+                        <img class="image-recette" :src="destination.src"> 
+                    </a>
+                    <a class="col-md-1" style="animation-duration: 2s" id="loading1">
+                        <div class="image-waiting" >
+                            <grid-loader :loading="true" color="white" 
+                            style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="container-row-images row col-md-12">
+                <div v-bind:style="{'padding-left' : rows[2].padding+'cm'}" ></div>
+                <div v-bind:style="{'margin-left' : rows[2].margin+'cm'}" id="carousel2"  
+                class="transition" @mouseover="endHover(2)" @mouseleave="resumeHover(2)"   >
+                    <a v-for="(destination,index) in rows[2].recettes" :href="destination.link" :key="index+'car2'"
+                    target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
+                        <img class="image-recette" :src="destination.src"> 
+                    </a>
+                    <a class="col-md-1" style="animation-duration: 2s" id="loading2">
+                        <div class="image-waiting" >
+                            <grid-loader :loading="true" color="white" 
+                            style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="container-row-images row col-md-12">
-            <div v-bind:style="{'padding-left' : rows[1].padding+'cm'}" ></div>
-            <div v-bind:style="{'margin-left' : rows[1].margin+'cm'}" id="carousel1" 
-            class="transition" @mouseover="endHover(1)" @mouseleave="resumeHover(1)"   >
-                <a v-for="(destination,index) in rows[1].recettes" :href="destination.link"  :key="index+'car1'"  
-                target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
-                    <img class="image-recette" :src="destination.src"> 
-                </a>
-                <a class="col-md-1" style="animation-duration: 2s" id="loading1">
-                    <div class="image-waiting" :style="{'background-color': getBGColor()}">
-                        <grid-loader :loading="true" color="white" 
-                        style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="container-row-images row col-md-12">
-            <div v-bind:style="{'padding-left' : rows[2].padding+'cm'}" ></div>
-            <div v-bind:style="{'margin-left' : rows[2].margin+'cm'}" id="carousel2"  
-            class="transition" @mouseover="endHover(2)" @mouseleave="resumeHover(2)"   >
-                <a v-for="(destination,index) in rows[2].recettes" :href="destination.link" :key="index+'car2'"
-                target="_blank" class="col-md-1" :id="index" @click="endHover(0);endHover(1);endHover(2)" >
-                    <img class="image-recette" :src="destination.src"> 
-                </a>
-                <a class="col-md-1" style="animation-duration: 2s" id="loading2">
-                    <div class="image-waiting" :style="{'background-color': getBGColor()}">
-                        <grid-loader :loading="true" color="white" 
-                        style="margin-left:auto;margin-right:auto;padding-top:1.2cm"></grid-loader>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <br>
     </div>
 </template>
 
@@ -243,9 +244,11 @@ export default {
         },500)
 
         for (let index = 0; index < nbImage +2; index++) {
+            
             this.crawlRecettes(0,true);
             this.crawlRecettes(1,true);
             this.crawlRecettes(2,true);
+            
         }
         $(window).focus( $.proxy(function(){
             this.resumeHover(0)
@@ -265,6 +268,11 @@ export default {
 </script>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    .header-text {
+        font-family: 'Great Vibes', cursive;
+        font-size: 60px;;
+    }
     .image-waiting{
         width: 6cm;
         height: 4.3cm;
@@ -273,6 +281,7 @@ export default {
         transform: scale(1);
         object-fit: cover;
         display: block;
+        background-color: transparent;;
     }
     
     .container{
@@ -303,7 +312,6 @@ export default {
     }
     .container-row-images a {
         margin-right: .3cm;
-        border-radius: 6px;
     }
     .container-row-images img{
         width: 6cm;
@@ -316,11 +324,11 @@ export default {
     }
     .container-row-images img:hover{
         transform: scale(1.05);
-        border-radius: 6px;
     }
 
     .container-logo{
         width: 5cm;
+        min-height: 5cm;
         margin-left: auto;
         margin-right: auto;
     }
@@ -328,6 +336,35 @@ export default {
         width: 100%;
         height: auto;
         
+    }
+    .container-rows{
+        background-color : rgb(49, 73, 100);
+        padding: .2cm 0 .2cm 0;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 2px grey; 
+        border-radius: 40px;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: rgb(156, 156, 156,.8); 
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(126, 125, 125, 0.8); 
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: rgba(87, 86, 86, 0.8); 
     }
 
 </style>
