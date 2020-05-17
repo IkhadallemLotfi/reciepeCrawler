@@ -245,7 +245,7 @@ export default {
         },250)
         setTimeout( ()=>{
             this.opacityText = 1;    
-        },500)
+        },1750)
 
         for (let index = 0; index < nbImage +2; index++) {
             
