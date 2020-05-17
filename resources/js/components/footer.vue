@@ -7,7 +7,7 @@
                 </div>
                 <div class="text col-md-10">
                     <p>
-                        DinnerSeek est un catalog de recettes choisies aléatoirement parmis une multitude de sitesweb 
+                        DinnerSeek est un catalogue de recettes choisies aléatoirement parmis une multitude de sitesweb 
                         dédiés à la cuisine. La recherche des recettes se fait dynamiquement et pendant votre 
                         visite de notre siteweb via un robot qui va récolter de façon aléatoire des recettes sur 
                         une dizaine de sites.
